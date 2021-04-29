@@ -59,4 +59,34 @@ System.err.println("  ##登陸失敗(寫死的只能是 tom/888)");
 		}
 		return uri;
 	}
+	
+	public Object login22(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Object uri = null;
+System.err.println("##獲得帳密開始驗證登入(方式2從DATABASE)");
+
+		// 1. 获取请求数据，封装
+		String name = request.getParameter("name");
+		String pwd = request.getParameter("pwd");
+		User user = new User();
+		user.setName(name);
+		user.setPwd(pwd);
+System.err.println("##user="+user);
+
+		// 2. 调用Service
+		UserService userService = new UserService();
+System.err.println("##開始登入   " + user);
+		User userInfo = userService.login22(user);
+		// 3. 跳转
+		if (userInfo == null) {
+		// 登陆失败
+System.err.println("  ##登陸失敗()");
+		} else {
+			// 登陆成功
+			request.getSession().setAttribute("userInfo", userInfo);
+			// 首页
+			uri = "loginSuccess";  // loginSuccess = /index.jsp
+		}
+		return uri;
+	}
 }

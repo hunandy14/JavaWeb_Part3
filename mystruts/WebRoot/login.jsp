@@ -16,7 +16,7 @@
   </head>
   
   <body>
-   	<form action="${pageContext.request.contextPath }/login.action" name="frmLogin"  method="post">
+   	<form action="${pageContext.request.contextPath }/${curAction }" name="frmLogin"  method="post">
    	   用户名： <input type="text" name="name"> <br/>
    	 密码： <input type="text" name="pwd"> <br/>
    	   <input type="submit" value="登陆"> <br/>

@@ -12,6 +12,9 @@ public class UserService {
 	public User login(User user){
 		return ud.login(user);
 	}
+	public User login22(User user){
+		return ud.login_database(user);
+	}
 	
 	// 模拟注册
 	public void register(User user) {

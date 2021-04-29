@@ -36,10 +36,12 @@ System.err.println("#################ActionServlet.init()");
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-System.err.println("######ActionServlet被激活了");		
+System.err.println("######ActionServlet被激活了");
+
 		try {
 			// 1. 获取请求uri, 得到请求路径名称   【login】
 			String uri = request.getRequestURI();
+			request.setAttribute("curAction", uri);
 			// 得到 login
 			String actionName=uri.substring(uri.lastIndexOf("/")+1, uri.indexOf(".action"));
 			
@@ -50,7 +52,9 @@ System.err.println("######ActionServlet被激活了");
 			// 当前请求的处理方法   【method="login"】
 			String method = actionMapping.getMethod();
 System.err.println("##從xml拿出的名字 method = " + method);
-			
+
+
+	
 			// 3. 反射： 创建对象，调用方法； 获取方法返回的标记
 			Class<?> clazz = Class.forName(className);
 			Object obj = clazz.newInstance();  //LoginAction loginAction = new LoginAction();
@@ -59,7 +63,13 @@ System.err.println("##從xml拿出的名字 method = " + method);
 			// 调用方法返回的标记
 			String returnFlag =  (String) m.invoke(obj, request, response);
 System.err.println("##returnFlag="+returnFlag);
-			
+// 第一次進來是null
+String username = request.getParameter("name");
+if(username==null){
+System.err.println("帳密無效空值" + uri);
+returnFlag="loginFaild";
+}			
+
 			// 4. 拿到标记，读取配置文件得到标记对应的页面 、 跳转类型
 			Result result = actionMapping.getResults().get(returnFlag);
 			// 类型
@@ -69,9 +79,12 @@ System.err.println("##returnFlag="+returnFlag);
 			
 			// 跳转
 			if ("redirect".equals(type)) {
+				System.err.println("    登入成功");
 				response.sendRedirect(request.getContextPath() + page);
 			} else {
+				System.err.println("    失敗重新"+page);
 				request.getRequestDispatcher(page).forward(request, response);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
