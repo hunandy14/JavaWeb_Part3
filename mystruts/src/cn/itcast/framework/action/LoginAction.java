@@ -28,6 +28,7 @@ public class LoginAction {
 	public Object login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Object uri = null;
+System.err.println("##獲得帳密開始驗證登入");
 
 		// 1. 获取请求数据，封装
 		String name = request.getParameter("name");
@@ -35,6 +36,7 @@ public class LoginAction {
 		User user = new User();
 		user.setName(name);
 		user.setPwd(pwd);
+System.err.println("##user="+user);
 
 		// 2. 调用Service
 		UserService userService = new UserService();
@@ -46,6 +48,7 @@ public class LoginAction {
 //					response);
 //			uri = request.getRequestDispatcher("/login.jsp");
 			uri = "loginFaild";   // loginFaild  = /login.jsp
+System.err.println("  ##登陸失敗(寫死的只能是 tom/888)");
 		} else {
 			// 登陆成功
 			request.getSession().setAttribute("userInfo", userInfo);

@@ -49,14 +49,16 @@ System.err.println("######ActionServlet被激活了");
 			
 			// 当前请求的处理方法   【method="login"】
 			String method = actionMapping.getMethod();
-System.err.println("從xml拿出的名字 = " + method);
+System.err.println("##從xml拿出的名字 method = " + method);
 			
 			// 3. 反射： 创建对象，调用方法； 获取方法返回的标记
 			Class<?> clazz = Class.forName(className);
 			Object obj = clazz.newInstance();  //LoginAction loginAction = new LoginAction();
 			Method m = clazz.getDeclaredMethod(method, HttpServletRequest.class,HttpServletResponse.class );
+			
 			// 调用方法返回的标记
 			String returnFlag =  (String) m.invoke(obj, request, response);
+System.err.println("##returnFlag="+returnFlag);
 			
 			// 4. 拿到标记，读取配置文件得到标记对应的页面 、 跳转类型
 			Result result = actionMapping.getResults().get(returnFlag);
