@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-     adsa  This is my JSP page. <br>
+     This is my JSP page. <br>
      
      ${requestScope.request_data }
      ${sessionScope.session_data }

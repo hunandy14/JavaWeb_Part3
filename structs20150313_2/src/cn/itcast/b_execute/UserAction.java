@@ -58,4 +58,30 @@ public class UserAction extends ActionSupport{
 		
 		return "login";
 	}
+	
+	public String login_UserAction() {
+System.err.println("##UserAction中的login2");
+		// 获取用户名密码
+		System.out.println(user.getUserName());
+		System.out.println(user.getPwd());
+		
+		
+		// 把数据保存到域
+		ActionContext ac = ActionContext.getContext();
+		
+		// 得到代表request的map
+		Map<String, Object> request = ac.getContextMap();
+		// 得到代表session的map
+		Map<String, Object> session = ac.getSession();
+		// 得到代表servletContext的map
+		Map<String, Object> application = ac.getApplication();
+		
+		// 保存
+		request.put("request_data", "request_data");
+		session.put("session_data", "session_data");
+		application.put("application_data", "application_data");
+		
+		
+		return "login22";
+	}
 }

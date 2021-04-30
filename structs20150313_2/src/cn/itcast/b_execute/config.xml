@@ -38,4 +38,10 @@
     	</action>
     </package> 
     
+    <package name="user2" extends="struts-default" namespace="/">
+    	<action name="login2" class="cn.itcast.b_execute.UserAction" method="login_UserAction">
+    		<result name="login22">/index.jsp</result>
+    	</action>
+    </package> 
+    
 </struts>
