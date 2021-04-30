@@ -38,9 +38,11 @@
     	</action>
     </package> 
     
-    <package name="user2" extends="struts-default" namespace="/">
+    <package name="user2" extends="struts-dfault" namespace="/">
+    	<!-- loging是網址路徑，訪到那個 calss 中的 login_UserAction 方法 -->
     	<action name="login2" class="cn.itcast.b_execute.UserAction" method="login_UserAction">
-    		<result name="login22">/index.jsp</result>
+    		<!-- Action執行完畢之後會返回一個數值，根據對應數值跳轉到下一個畫面 -->
+    		<result name="login22">/index.jsp</result> 
     	</action>
     </package> 
     
