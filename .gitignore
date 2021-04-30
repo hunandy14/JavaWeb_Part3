@@ -44,6 +44,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+**/WebRoot/WEB-INF/classes/**
 
 # External tool builders
 .externalToolBuilders/
