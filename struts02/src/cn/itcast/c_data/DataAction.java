@@ -19,7 +19,8 @@ public class DataAction extends ActionSupport implements RequestAware, SessionAw
 	private Map<String, Object> session;
 	private Map<String, Object> application;
 	
-	// struts运行时候，会把代表request的map对象注入
+// 方式3::最好用的方法簡單好寫(有要幹嘛在額外自己寫)
+	//	struts运行时候，会把代表request的map对象注入
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;

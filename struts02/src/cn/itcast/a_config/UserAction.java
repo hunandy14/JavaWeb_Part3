@@ -7,6 +7,7 @@ public class UserAction {
 	
 	private String userName;
 	public void setUserName(String userName) {
+		System.err.println("自動注入get數據 userName="+userName);
 		this.userName = userName;
 	}
 	

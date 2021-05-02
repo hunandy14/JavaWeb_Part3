@@ -6,7 +6,7 @@
 <struts>
 
 
-	<!-- 原本的手動配置 -->
+	<!-- 原本的手動配置 
 	<package name="user" namespace="/" extends="struts-default">
 		<action name="user_login_def" class="cn.itcast.a_config.UserAction" method="login">
 			<result name="login">/login.jsp</result>			
@@ -16,23 +16,17 @@
 			<result name="register">/register.jsp</result>			
 		</action>
     </package> 
+	-->
     
     
     
     <!-- 新的自動配置 -->
 	<package name="config" namespace="/user" extends="struts-default" abstract="false">		
 		 <!-- 使用通配符优化上面的步骤 -->
-		 <!-- http://localhost:8080/struts02/user_login
+		 <!-- http://localhost:8080/struts02/user_login -->
 		 <action name="user_*" class="cn.itcast.a_config.UserAction" method="{1}">
 			<result name="{1}">/{1}.jsp</result>			
 		</action>		
-		 -->
-		 
-		 <action name="user_*" class="cn.itcast.a_config.UserAction" method="{1}">
-			<result name="{1}">/{1}.jsp</result>
-		</action>
-		 
-		 
 	</package>	
 	
 </struts>

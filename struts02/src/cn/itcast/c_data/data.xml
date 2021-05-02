@@ -11,7 +11,8 @@
 		<global-results>
 			<result name="success">/data.jsp</result>
 		</global-results>
-
+		
+		<!-- 不打方法名字預設執行 execute() 方法，要自己寫重載 -->
 		<action name="data" class="cn.itcast.c_data.DataAction">
 		</action>
 		
