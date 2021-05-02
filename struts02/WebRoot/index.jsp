@@ -20,6 +20,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
   </head>
   
-  <body>首页<br/>
+  <body>WebRoot中的index.jsp<br/>
   </body>
 </html>

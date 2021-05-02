@@ -14,14 +14,17 @@ import org.apache.struts2.util.StrutsTypeConverter;
  * @author Jie.Yuan
  * 
  */
+
+// 如何告訴 struct2 ，定意義在 xwork-conversion.properties 文件中 
 public class MyConverter extends StrutsTypeConverter {
-
 	// 新需求： 要求项目中要支持的格式,如: yyyy-MM-dd/yyyyMMdd/yyyy年MM月dd日..
-
 	// 先定义项目中支持的转换的格式
-	DateFormat[] df = { new SimpleDateFormat("yyyy-MM-dd"),
+	DateFormat[] df = {
+			new SimpleDateFormat("yyyy-MM-dd"),
+			new SimpleDateFormat("yyyy/MM/dd"),
 			new SimpleDateFormat("yyyyMMdd"),
-			new SimpleDateFormat("yyyy年MM月dd日") };
+			new SimpleDateFormat("yyyy年MM月dd日")
+	};
 
 	/**
 	 * 把String转换为指定的类型 【String To Date】

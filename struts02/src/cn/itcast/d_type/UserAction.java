@@ -10,20 +10,17 @@ import java.util.Date;
 public class UserAction {
 	
 	 // 对象类型，一定给get方法
-	private User user; 
+	private User user222; 
 	public void setUser(User user) {
-		this.user = user;
+		this.user222 = user;
 	}
 	public User getUser() {
-		return user;
+		return user222;
 	}
 
 	// 处理注册请求
 	public String register() {
-		System.out.println(user.getName());
-		System.out.println(user.getPwd());
-		System.out.println(user.getAge());
-		System.out.println(user.getBirth());
+		System.err.println(user222);
 		return "success";
 	}
 }

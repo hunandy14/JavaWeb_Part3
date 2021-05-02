@@ -1,5 +1,7 @@
 package cn.itcast.d_type;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -33,5 +35,12 @@ public class User {
 	public Date getBirth() {
 		return birth;
 	}
+	@Override
+	public String toString() {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		return "User [name=" + name + ", pwd=" + pwd + ", age=" + age
+				+ ", birth=" + df.format(birth) + "]";
+	}
+	
 	
 }

@@ -22,10 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	<form action="${pageContext.request.contextPath }/user_register.action" method="post">
-  		用户名:<input type="text" name="user.name"><br/>
-  		密码:<input type="text" name="user.pwd"><br/>
-  		年龄:<input type="text" name="user.age"><br/>
-  		生日:<input type="text" name="user.birth"><br/>
+  		用户名:<input type="text" name="user222.name"><br/>
+  		密码:<input type="text" name="user222.pwd"><br/>
+  		年龄:<input type="text" name="user222.age"><br/>
+  		生日:<input type="text" name="user222.birth"><br/>
   		
   		<input type="submit" value="注册">
   	</form>
