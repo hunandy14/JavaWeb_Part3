@@ -28,11 +28,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				<td>${vs.count }</td>
   				<td>${fileName }</td>
   				<td>
-  					<!-- 构建一个url -->
+  					<!-- 构建一个 url 自動產生Get語法的網址
+  					down_down 第二個down是呼叫down()方法-->
   					<c:url var="url" value="down_down">
   						<c:param name="fileName" value="${fileName}"></c:param>
   					</c:url>
-  					
+  					${url }
   					<a href="${url }">下载</a>
   				</td>
   			</tr>

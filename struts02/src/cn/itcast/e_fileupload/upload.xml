@@ -40,6 +40,7 @@
 			   <param name="inputName">attrInputStream</param>
 			   
 			   <!-- 下载头，包括：浏览器显示的文件名 -->
+			   <!-- ${downFileName} 值得獲取會呼叫 getdownFileName() -->
 			   <param name="contentDisposition">attachment;filename=${downFileName}</param>
 			 
 			 	<!-- 缓冲区大小设置 -->

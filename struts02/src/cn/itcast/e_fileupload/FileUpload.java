@@ -31,7 +31,7 @@ public class FileUpload extends ActionSupport {
 		/******拿到上传的文件，进行处理******/
 		// 把文件上传到upload目录
 		
-		// 获取上传的目录路径
+		// 获取上传的目录路径(tomcat中Webapps路徑)
 		String path = ServletActionContext.getServletContext().getRealPath("/upload");
 		// 创建目标文件对象
 		File destFile = new File(path,file1FileName);

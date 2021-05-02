@@ -23,7 +23,7 @@ public class DownAction extends ActionSupport {
 	
 	/*************1. 显示所有要下载文件的列表*********************/
 	public String list() throws Exception {
-		
+System.err.println("#### 顯示下載清單");
 		//得到upload目录路径
 		String path = ServletActionContext.getServletContext().getRealPath("/upload");
 		// 目录对象
