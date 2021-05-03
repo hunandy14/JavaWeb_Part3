@@ -5,6 +5,7 @@ public class Admin {
 	private int id;
 	private String userName;
 	private String pwd;
+	
 	public int getId() {
 		return id;
 	}
@@ -22,6 +23,11 @@ public class Admin {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", userName=" + userName + ", pwd=" + pwd
+				+ "]";
 	}
 	
 }
