@@ -6,6 +6,15 @@ public class Admin {
 	private String userName;
 	private String pwd;
 	
+	public Admin() {
+		super();
+	}
+	public Admin(int id, String userName, String pwd) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.pwd = pwd;
+	}
 	public int getId() {
 		return id;
 	}
