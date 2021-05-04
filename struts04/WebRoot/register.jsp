@@ -6,8 +6,10 @@
     <title>My JSP 'index.jsp' starting page</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">   
-	<!-- 修改struts标签默认的样式： 不让换行 
+	<meta http-equiv="expires" content="0">  
+	
+	 
+	<!-- 修改struts标签默认的样式的方法1 
 	<style type="text/css">
 	ul{
 		display: inline;
@@ -18,6 +20,8 @@
 	}
 	</style>
 	--> 
+	
+	
   </head>
   
   <body>
@@ -27,14 +31,14 @@
   	<br/>
   	
   	 <form method="post" action="${pageContext.request.contextPath }/user_register.action">
-  	 	用户名：<input type="text" name="user.userName">
+  	 	用戶名：<input type="text" name="user.userName">
   	 	 		<s:fielderror fieldName="user.userName"></s:fielderror>
   	 	<br/>
-  	 	密码：<input type="text" name="user.pwd">
+  	 	密碼　：<input type="text" name="user.pwd">
   	 			<s:fielderror fieldName="user.pwd"></s:fielderror>
   	 	<br/>
-  	 	邮箱：<input type="text" name="user.email"><br/>
-  	 	生日：<input type="text" name="user.birth"><br/>
+  	 	郵箱　：<input type="text" name="user.email"><br/>
+  	 	生日　：<input type="text" name="user.birth"><br/>
   	 	<input type="submit" value="注册"><br/>
   	 </form>
   </body>

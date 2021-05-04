@@ -16,7 +16,7 @@
   	<s:form action="/user_login" method="post" name="frmLogin" id="frmLogin">
   		
   		用户名：<s:textfield name="user.name"></s:textfield>
-  		密码：<s:textfield name="user.pwd"></s:textfield>
+  		密码　：<s:textfield name="user.pwd"></s:textfield>
   		<s:submit value="登陆"></s:submit>
   	</s:form>
   	

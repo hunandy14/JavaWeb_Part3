@@ -5,7 +5,8 @@
 
 <struts>
 
-	<!-- 修改主题 (当前项目所有的标签都用此主题)-->
+	<!-- 修改主题 (当前项目所有的标签都用此主题)
+	省得輸入帳號的對話框被強加主題不能自己設置排版 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
 
 	<package name="validation" extends="struts-default">

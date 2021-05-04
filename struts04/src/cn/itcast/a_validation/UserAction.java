@@ -1,7 +1,5 @@
 package cn.itcast.a_validation;
 
-import java.util.List;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -10,7 +8,8 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  */
 public class UserAction extends ActionSupport {
-	
+
+	private static final long serialVersionUID = 1L;
 	// 封装请求数据
 	private User user;
 	

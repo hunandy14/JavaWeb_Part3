@@ -1,6 +1,5 @@
 package cn.itcast.a_validation;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

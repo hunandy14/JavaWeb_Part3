@@ -14,7 +14,8 @@ import com.opensymphony.xwork2.util.ValueStack;
  *
  */
 public class UserAction extends ActionSupport implements ModelDriven<User> {
-	
+
+	private static final long serialVersionUID = 1L;
 	// 封装请求数据
 	private User user = new User();
 	public void setUser(User user) {
@@ -64,6 +65,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	public String index() {
 		// 保存数据到request域
 		ActionContext ac = ActionContext.getContext();
+		@SuppressWarnings("unchecked")
 		Map<String,Object> request = (Map<String, Object>) ac.get("request");
 		request.put("cn", "China");
 		
