@@ -14,6 +14,12 @@ public class User {
 		this.id = id;
 		this.name = name;
 	}
+	public User(int id, String name, Address address) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+	}
 	public Address getAddress() {
 		return address;
 	}

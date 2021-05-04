@@ -10,7 +10,7 @@ import org.junit.Test;
 public class OgnlDemo1 {
 
 	/**
-	 * 1. Ognl表达式语言语言取值，取非根元素的值，必须用#号
+	 * 1. Ognl表达式语言语言取值，取非根元素的值，必须用#号  [context.put("user", user);]
 	 * @throws Exception
 	 */
 	@Test
@@ -18,22 +18,20 @@ public class OgnlDemo1 {
 		// 创建一个Ognl上下文对象
 		OgnlContext context = new OgnlContext();
 		// 放入数据
-		User user = new User();
-		user.setId(100);
-		user.setName("Jack");
+		User user = new User(77, "Jack", new Address("台灣", "台北"));
 		// 【往非根元素放入数据， 取值的时候表达式要用"#"】
 		context.put("user", user);
 		
 		// 获取数据(map)
 		// 先构建一个Ognl表达式, 再解析表达式
-		Object ognl = Ognl.parseExpression("#user.name");
+		Object ognl = Ognl.parseExpression("#user.address");
 		Object value = Ognl.getValue(ognl, context, context.getRoot());
 		
 		System.out.println(value);
 	}
 	
 	/**
-	 * 2. Ognl表达式语言语言取值，取根元素的值，不用带#号
+	 * 2. Ognl表达式语言语言取值，取根元素的值，不用带#号 [context.setRoot(user);]
 	 * @throws Exception
 	 */
 	@Test
@@ -41,9 +39,7 @@ public class OgnlDemo1 {
 		// 创建一个Ognl上下文对象
 		OgnlContext context = new OgnlContext();
 		// 放入数据
-		User user = new User();
-		user.setId(100);
-		user.setName("Jack");
+		User user = new User(78, "Witch", new Address("台灣", "台北"));
 		// 【往根元素放入数据】
 		context.setRoot(user);
 		
@@ -66,7 +62,7 @@ public class OgnlDemo1 {
 		
 		// Ognl表单式语言，调用类的静态方法
 		//Object ognl = Ognl.parseExpression("@Math@floor(10.9)");
-		// 由于Math类在开发中比较常用，所以也可以这样写
+		// 由于Math类在开发中比较常用，所以也可以这样写(簡寫把Math省了)
 		Object ognl = Ognl.parseExpression("@@floor(10.9)");
 		Object value = Ognl.getValue(ognl, context, context.getRoot());
 		System.out.println(value);

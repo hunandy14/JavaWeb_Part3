@@ -10,6 +10,7 @@ public class Address {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public Address(String province, String city) {
 		super();
 		this.province = province;
@@ -26,6 +27,10 @@ public class Address {
 	}
 	public void setCity(String city) {
 		this.city = city;
+	}
+	@Override
+	public String toString() {
+		return "Address [province=" + province + ", city=" + city + "]";
 	}
 	
 }
