@@ -26,7 +26,7 @@
   
   
   <body>
-    <br/>一、. list迭代</br>
+    <br/>一、. list迭代<br/>
     <table border="1">
     	<tr>
     		<td>编号</td>
@@ -41,7 +41,7 @@
   		</s:iterator>
   	</table>
   	
-  	 <br/>二、迭代map</br>
+  	 <br/>二、迭代map<br/>
     <table border="1">
     	<tr>
     		<td>编号</td>

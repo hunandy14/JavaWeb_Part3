@@ -21,12 +21,12 @@
   </head>
   
   <body>
-    <br/>一、.构建 list集合</br>
+    <br/>一、.构建 list集合<br/>
     <s:iterator var="str" value="{'a','b'}">
     	<s:property value="#str"/>
     </s:iterator>
     
-     <br/>一、.构建 map集合</br>
+     <br/>一、.构建 map集合<br/>
      <s:iterator var="en" value="#{'cn':'China','usa':'America'}">
      	<s:property value="#en.key"/>
      	<s:property value="#en.value"/>  <br/>
