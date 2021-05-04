@@ -32,35 +32,33 @@ public class OgnlDemo2 extends ActionSupport{
 System.err.println("## 進入 od2 execute2() 方法");
 
 		ActionContext ac = ActionContext.getContext();
-		// 映射数据
-		ac.getContextMap().put("request_data", "request_data");
+		// 映射数据 (這個可以不用 attr可以直接叫到)
+		ac.getContextMap().put("request_data", "[request_data]");
 		// 数据存储request
-//		Map<String,Object> map = (Map<String, Object>) ac.get("request");
-//		map.put("request_data", "request_data");
-//		map.put("cn", "China");
+		Map<String,Object> map = (Map<String, Object>) ac.get("request");
+		map.put("map_request_data", "[request_data2]");
+		map.put("map_cn", "[China]");
 		
-		ac.getSession().put("Session_data", "Session_data");
-		ac.getApplication().put("Application_data", "Application_data");
+		ac.getSession().put("Session_data", "[Session_data]");
+		ac.getApplication().put("Application_data", "[Application_data]");
 		
 		
 		// 二、值栈对象的存储数据的原理
 		ValueStack vs = ac.getValueStack();
 		/***************操作根元素的几种方法*****************/
 		// 设置数据: 入栈
-		//vs.push(new User(1002,"Tom"));	// 栈顶
-		//vs.pop();						// 移除栈顶元素
+//		vs.push(new User(1002,"Tom"));	// 栈顶
+//		vs.pop();						// 移除栈顶元素
 		
 		// 如何存储？  map结构存储  
-		//vs.set("user1", new User(1,"Jacky1"));
-		//vs.set("user2", new User(2,"Jacky2"));
+//		vs.set("user1", new User(1,"Jacky1"));
+//		vs.set("user2", new User(2,"Jacky2"));
 		
 		return super.execute();
 	}
 	
 	public String execute3() throws Exception {
 System.err.println("## 進入 od2 execute3() 方法");
-	
-
 
 		// 获取值栈对象，方式1：
 		HttpServletRequest request = ServletActionContext.getRequest();

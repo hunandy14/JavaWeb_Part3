@@ -14,8 +14,6 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  */
 public class OgnlDemo3 extends ActionSupport{
-	
-	
 	@Override
 	public String execute() throws Exception {
 		

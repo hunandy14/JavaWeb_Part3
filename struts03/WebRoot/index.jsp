@@ -18,25 +18,37 @@
   <body>
   	<!-- 页面： 必须要拿到ValueStack -->
   	
-     <br/>1. 取根元素的值<br/>
-     <s:property value="user.id"/> 
-     <s:property value="user.name"/> 
-     <s:property value="user.address"/> 
-     <s:property value="user.address.city"/> 
-     <s:property value="user.address.province"/> 
+  	-------------------------------------------<br/>
+     <br/><br/>1. 取根元素的值 那個class本身的成員變數<br/>
+     <s:property value="user.id"/> <br/>
+     <s:property value="user.name"/> <br/>
+     <s:property value="user.address"/> <br/>
+     <s:property value="user.address.city"/> <br/>
+     <s:property value="user.address.province"/>  <br/>
      
-      <br/>2. 取非根元素的值<br/>
-      <s:property value="#request.cn"/>
-      <s:property value="#session.Session_data"/>
-      <s:property value="#application.Application_data"/>    <br/>
+     -------------------------------------------<br/>
+      <br/><br/>2. 手動取非根元素的值<br/>
+      #request.request_data::         <s:property value="#request.request_data"/> <br/>
+      #request.map_request_data::     <s:property value="#request.map_request_data"/> <br/>
+      #request.map_cn::               <s:property value="#request.map_cn"/> <br/>
+      #session.Session_data::         <s:property value="#session.Session_data"/> <br/>
+      #application.Application_data:: <s:property value="#application.Application_data"/>    <br/><br/>
      
+     -------------------------------------------<br/>
       <!-- 自动找request/session/application,找到后立刻返回 -->
-      <s:property value="#request_data"/>
-      <s:property value="#attr.Session_data"/>
-      <s:property value="#attr.Application_data"/>  <br/>
+      <br/><br/>2. 自动找request/session/application,找到后立刻返回 <br/>
+      #request_data::          <s:property value="#request_data"/> <br/>
+      #attr.map_request_data:: <s:property value="#attr.map_request_data"/> <br/>
+      #attr.map_cn::           <s:property value="#attr.map_cn"/> <br/>
       
-      <!-- 获取请求的参数数据 -->
-      <s:property value="#parameters.userName"/>
+      #attr.Session_data::     <s:property value="#attr.Session_data"/> <br/>
+      #attr.Application_data:: <s:property value="#attr.Application_data"/>  <br/><br/>
+      
+      -------------------------------------------<br/>
+      <!-- 获取请求的参数数据 get 參數上的東西-->
+      <br/><br/>3. 获取请求的参数数据 get 參數上的東西 <br/>
+      get_xml_userName:: <s:property value="#parameters.xml_userName"/> <br/>
+      get_userName::     <s:property value="#parameters.userName"/> <br/>
      
      <!-- struts的调试标签：可以观测值栈数据 -->
      <s:debug></s:debug>
