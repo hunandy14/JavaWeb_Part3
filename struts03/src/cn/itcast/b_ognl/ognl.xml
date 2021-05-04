@@ -6,7 +6,15 @@
 <struts>
 	<package name="ogn_" extends="struts-default">
 	
-		<action name="ognl" class="cn.itcast.b_ognl.OgnlDemo3">
+		<action name="ognl22" class="cn.itcast.b_ognl.OgnlDemo2" method="execute2">
+			<result name="success">/ognl.jsp</result>
+			
+		</action>
+		<action name="ognl23" class="cn.itcast.b_ognl.OgnlDemo2" method="execute3">
+			<result name="success">/ognl.jsp</result>
+		</action>
+		
+		<action name="ognl3" class="cn.itcast.b_ognl.OgnlDemo3">
 			<result name="success">/ognl.jsp</result>
 		</action>
 	

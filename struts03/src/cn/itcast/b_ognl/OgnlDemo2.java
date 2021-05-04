@@ -19,6 +19,7 @@ public class OgnlDemo2 extends ActionSupport{
 	
 	// 根元素值
     private User user = new User(100,"Jacks");
+    
     public User getUser() {
 		return user;
 	}
@@ -26,9 +27,10 @@ public class OgnlDemo2 extends ActionSupport{
 		this.user = user;
 	}
 	
-	@Override
-	public String execute() throws Exception {
-		
+	
+	public String execute2() throws Exception {
+System.err.println("## 進入 od2 execute2() 方法");
+
 		ActionContext ac = ActionContext.getContext();
 		// 映射数据
 		ac.getContextMap().put("request_data", "request_data");
@@ -52,12 +54,14 @@ public class OgnlDemo2 extends ActionSupport{
 		//vs.set("user1", new User(1,"Jacky1"));
 		//vs.set("user2", new User(2,"Jacky2"));
 		
-		
 		return super.execute();
 	}
+	
+	public String execute3() throws Exception {
+System.err.println("## 進入 od2 execute3() 方法");
+	
 
-	// 一、获取值栈对象的2种方式
-	private void getVs() {
+
 		// 获取值栈对象，方式1：
 		HttpServletRequest request = ServletActionContext.getRequest();
 		ValueStack vs1 = (ValueStack) request.getAttribute("struts.valueStack");
@@ -66,11 +70,11 @@ public class OgnlDemo2 extends ActionSupport{
 		ActionContext ac = ActionContext.getContext();
 		ValueStack vs2 = ac.getValueStack();
 		
-		System.out.println(vs1 == vs2);//true
+		System.out.println("ServletActionContext.getRequest() " +
+				"是否等於  ActionContext.getContext() ---" + (vs1 == vs2));//true
+		
+		return super.execute();
 	}
-	
-	
-	
 }
 
 
