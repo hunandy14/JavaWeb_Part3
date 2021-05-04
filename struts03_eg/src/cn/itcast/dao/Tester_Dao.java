@@ -9,10 +9,10 @@ import org.junit.Test;
 import cn.itcast.entity.Admin;
 import cn.itcast.utils.JdbcUtils;
 
-public class Tester_AdminDao {
+public class Tester_Dao {
 	AdminDao dao = new AdminDao();
 	Admin admin = new Admin();
-	public Tester_AdminDao() {
+	public Tester_Dao() {
 		JdbcUtils.getQuerrRunner();
 	}
 	
