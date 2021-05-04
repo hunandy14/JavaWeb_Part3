@@ -1,5 +1,7 @@
 package cn.itcast.a_validation;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -34,7 +36,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [birth=" + birth + ", email=" + email + ", pwd=" + pwd
+		String date_str = new SimpleDateFormat("yyyy-MM-dd").format(birth);
+		return "User [birth=" + date_str + ", email=" + email + ", pwd=" + pwd
 				+ ", userName=" + userName + "]";
 	}
 	

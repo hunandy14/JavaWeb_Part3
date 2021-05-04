@@ -8,7 +8,7 @@
 	<package name="form" extends="struts-default">
 		
 	
-		<action name="user_*" class="cn.itcast.b_form.UserAction" method="{1}">
+		<action name="user2_*" class="cn.itcast.b_form.UserAction" method="{1}">
 			<result name="success">/index.jsp</result>
 			<result name="viewUpdate">/viewUpdate.jsp</result>
 		</action>
