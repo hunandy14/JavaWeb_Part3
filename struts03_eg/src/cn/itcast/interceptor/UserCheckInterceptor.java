@@ -20,9 +20,10 @@ public class UserCheckInterceptor extends AbstractInterceptor{
 		 ActionProxy proxy = invocation.getProxy();
 		 // 获取当前执行的方法名
 		 String methodName = proxy.getMethod();
+System.err.println("#### 攔截被執行，當前方法名字"+methodName);
 		 // 判断
 		 if (!"login".equals(methodName)) {
-			 // 先获取当前登陆的用户
+			 // 先获取当前登陆的用户(userInfo保存登入成功後的使用者帳密)
 			 Object obj = ac.getSession().get("userInfo");
 			 if (obj == null) {
 				 // 没有登陆

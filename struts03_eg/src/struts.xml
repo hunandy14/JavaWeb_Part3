@@ -9,7 +9,8 @@
 
 	<package name="user" extends="struts-default">
 	
-		<!-- 【拦截器配置】 -->
+		<!-- 【拦截器配置】
+		-->
 		<interceptors>
 			<interceptor name="loginCheck" class="cn.itcast.interceptor.UserCheckInterceptor"></interceptor>
 			<interceptor-stack name="myStack">
@@ -41,7 +42,7 @@
 			<!-- 1. 登陆失败 -->
 			<result name="input">/login.jsp</result>
 			
-			<!-- 2. 登陆成功 -->
+			<!-- 2. 登陆成功 - 利用"user_*來呼叫list()方法，把數據寫進去域變數 list.jsp才讀的到"-->
 			<result name="loginSuccess" type="redirectAction">user_list</result>
 			
 			<!-- 3. 列表展示 -->
