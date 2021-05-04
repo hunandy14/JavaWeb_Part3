@@ -10,15 +10,20 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	
+	<!-- 控制奇偶行變色 -->
 	<style type="text/css" >
 	   .odd{
-	           background-color: red; 
+	           background-color: #81C7D4; 
 	          }
 	   .even{
-	           background-color:blue;}
+	           background-color: #9B90C2;}
 	  </style>
 
   </head>
+  
+  
+  
   
   <body>
     <br/>一、. list迭代</br>
@@ -28,9 +33,10 @@
     		<td>名称</td>
     	</tr>
   		<s:iterator var="user" value="#request.list" status="st">
-  			<tr class=<s:property value="#st.even?'even':'odd'"/> >
+  			<tr class=<s:property value="#st.even?'even':'odd'"/> > <!-- 控制奇偶行變色 -->
   				<td><s:property value="#user.id"/></td>
   				<td><s:property value="#user.name"/></td>
+  				<td><s:property value="#st"/></td>
   			</tr>
   		</s:iterator>
   	</table>

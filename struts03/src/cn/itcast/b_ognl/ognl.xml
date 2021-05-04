@@ -13,7 +13,7 @@
 		<action name="ognl23" class="cn.itcast.b_ognl.OgnlDemo2" method="execute3">
 			<result name="success">/index.jsp</result>
 		</action>
-		
+		<!-- http://localhost:8081/struts03/ognl3 -->
 		<action name="ognl3" class="cn.itcast.b_ognl.OgnlDemo3">
 			<result name="success">/ognl.jsp</result>
 		</action>
