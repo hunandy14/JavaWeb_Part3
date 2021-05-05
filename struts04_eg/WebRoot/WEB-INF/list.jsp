@@ -12,10 +12,10 @@
   <body>
   	 <table border="1" align="center">
   	 	<tr>
-  	 		<th>序号</th>
-  	 		<th>编号</th>
-  	 		<th>员工名称</th>
-  	 		<th>日志日期</th>
+  	 		<th>序號</th>
+  	 		<th>編號</th>
+  	 		<th>員工名稱</th>
+  	 		<th>日誌日期</th>
   	 		<th>操作</th>
   	 	</tr>
   	 	<!-- 1. 先判断；2.  再迭代 -->

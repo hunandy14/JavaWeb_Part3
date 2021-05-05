@@ -1,4 +1,4 @@
-package cn.itcast.action;
+package cn.itcast.utils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -36,9 +36,9 @@ public class MyConverter extends StrutsTypeConverter {
 	 * @param toClass
 	 *            要转换为的目标类型
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Object convertFromString(Map context, String[] values, Class toClass) {
-
 		// 判断: 内容不能为空
 		if (values == null || values.length == 0) {
 			return null;
@@ -47,7 +47,6 @@ public class MyConverter extends StrutsTypeConverter {
 		if (Date.class != toClass) {
 			return null;
 		}
-		
 		// 迭代：转换失败继续下一个格式的转换； 转换成功就直接返回
 		for (int i=0; i<df.length; i++) {
 			try {
@@ -58,22 +57,14 @@ public class MyConverter extends StrutsTypeConverter {
 		}
 		return null;
 	}
-
+	@SuppressWarnings("rawtypes")
 	@Override
 	public String convertToString(Map context, Object o) {
-		Date date = null;
-		// 判斷類型
-		if (Date.class == o) {
-			date = (Date)o;
-		} else {
-			return null;
-		}
+		// 轉換型別
+		if(o == null){ return null; }
 		// 轉換
-		if(o != null){
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-			return df.format(date);
-		}
-		return null;
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String str = df.format((Date)o);
+		return str;
 	}
-
 }
