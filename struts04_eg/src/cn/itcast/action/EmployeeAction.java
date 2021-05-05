@@ -72,6 +72,8 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	 * 3. 进入修改页面
 	 */
 	public String viewUpdate() {
+		// 按下修改後會由get傳id並進入這個函式
+		// get上的id會被struts自動封裝進成員變數employee
 		try {
 			// 3.1 获取当前修改的记录的主键值
 			int id = employee.getId();
@@ -83,6 +85,7 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 			vs.pop();	//移除栈顶元素
 			vs.push(emp);	// emp对象放入栈顶
 			
+System.err.println("#### 結束 viewUpdate() 下一步進入 update.jsp");
 			return "update";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -94,6 +97,8 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	 * 4. 修改员工
 	 */
 	public String update() {
+		// update.jsp 按下修改員工後才執行這個函式
+		// 按下同時會提交表格數據到struts2，並由struts寫入到成員函式employee
 		try {
 			// 调用service修改
 			employeeService.update(employee);

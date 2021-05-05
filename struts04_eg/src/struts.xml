@@ -16,6 +16,7 @@
 	
 		<action name="emp_*" class="cn.itcast.action.EmployeeAction" method="{1}">
 			
+			<!-- 第一步寫在 那個要防的jsp的form裡面的<s:token></s:token> -->
 			<!-- 防止表单重复提交，第二步： 配置" 防止表单重复提交拦截器" -->
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<interceptor-ref name="token">
