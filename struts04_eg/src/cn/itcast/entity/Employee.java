@@ -41,14 +41,10 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		String date_str=null;
-		if(workDate!=null){			
-			date_str = new SimpleDateFormat("yyyy-MM-dd").format(workDate);
-		}
 		return "Employee [id=" + id + ", empName=" + empName + ", workDate="
-				+ workDate + "]";
+				+ coverToString(workDate) + "]";
 	}
-	
+
 	
 	// 字串轉換到日期
 	private Date coverToDate(String Date) {
@@ -61,5 +57,14 @@ public class Employee {
 			e.printStackTrace();
 		}
 		return date;
+	}
+	// 日期轉換到字串
+	private String coverToString(Date date) {
+		if(date!=null){			
+			return new SimpleDateFormat("yyyy-MM-dd").format(date);
+		} else {
+			return null;
+		}
+		
 	}
 }

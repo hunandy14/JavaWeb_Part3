@@ -17,6 +17,7 @@ import com.opensymphony.xwork2.util.ValueStack;
  *
  */
 public class EmployeeAction extends ActionSupport implements ModelDriven<Employee>{
+	private static final long serialVersionUID = 1L;
 	
 	/****封装数据****/
 	private Employee employee = new Employee();
@@ -31,8 +32,6 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	public Employee getModel() {
 		return employee;
 	}
-	
-
 	
 	/****调用的Service****/
 	private IEmployeeService employeeService = new EmployeeService();

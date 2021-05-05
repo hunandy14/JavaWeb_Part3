@@ -1,16 +1,11 @@
 package cn.itcast.service.impl;
 
-import java.sql.SQLException;
 import java.util.List;
-
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import cn.itcast.dao.IEmployeeDao;
 import cn.itcast.dao.impl.EmployeeDao;
 import cn.itcast.entity.Employee;
 import cn.itcast.service.IEmployeeService;
-import cn.itcast.utils.JdbcUtils;
 
 public class EmployeeService implements IEmployeeService{
 	
