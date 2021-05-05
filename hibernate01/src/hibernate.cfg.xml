@@ -27,7 +27,8 @@
 		
 		
 		<!-- 3. 加载所有映射 
-		<mapping resource="cn/itcast/a_hello/Employee.hbm.xml"/>
 		-->
+		<mapping resource="cn/itcast/a_hello/Employee.hbm.xml"/>
+		
 	</session-factory>
 </hibernate-configuration>
