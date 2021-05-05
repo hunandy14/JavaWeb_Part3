@@ -31,7 +31,6 @@ public class App3 {
 		// 主键查询
 		//Employee emp = (Employee) session.get(Employee.class, 1);
 		
-		// HQL查询，查询全部
 		Query q = session.createQuery("from Employee where empId=1 or empId=2");
 		List<Employee> list = q.list();
 		
@@ -49,7 +48,7 @@ public class App3 {
 		Transaction tx = session.beginTransaction();
 		
 		Criteria criteria = session.createCriteria(Employee.class);
-		// 条件
+		// 条件(拿掉就取全部)
 		criteria.add(Restrictions.eq("empId", 1));
 		// 查询全部
 		List<Employee> list = criteria.list();

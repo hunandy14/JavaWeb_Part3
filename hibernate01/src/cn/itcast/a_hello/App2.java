@@ -51,15 +51,15 @@ public class App2 {
 	public void testUpdate() throws Exception {
 		// 对象
 		Employee emp = new Employee();
-		emp.setEmpId(1000000);
-		emp.setEmpName("张三3");
+		emp.setEmpId(18);
+		emp.setEmpName("chg");
 		
 		// 创建session
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 		
 		//-------执行操作-------
-		// 没有设置主键，执行保存；有设置主键，执行更新操作; 如果设置主键不存在报错！
+		// 没有设置主键? 执行保存:执行更新操作; 如果设置主键但主键不存在不存在則报错！
 		session.saveOrUpdate(emp);
 		
 		tx.commit();
