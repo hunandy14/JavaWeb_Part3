@@ -67,10 +67,11 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		String date_str = new SimpleDateFormat("yyyy-MM-dd").format(birth);
+		String date_str=null;
+		if(birth!=null){			
+			date_str = new SimpleDateFormat("yyyy-MM-dd").format(birth);
+		}
 		return "User [birth=" + date_str + ", email=" + email + ", pwd=" + pwd
 				+ ", userName=" + userName + "]";
 	}
-	
-	
 }
