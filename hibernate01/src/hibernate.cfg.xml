@@ -22,13 +22,18 @@
 		<property name="hibernate.show_sql">true</property>
 		<!-- 2.2 格式化sql -->
 		<property name="hibernate.format_sql">true</property>
-		<!-- 2.3 自动建表  -->
+		<!-- 2.3 自动建表  
+		1. create-drop 創建 sessionFactory 時建表，調用close()後刪表
+		2. create 每次都重新建立表格，已經存在會先刪除
+		3. update 表不存在的則建立
+		4. validate 生成環境的時候驗證，映射文件與表結構不同則報錯
+		-->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		
 		<!-- 3. 加载所有映射 
-		-->
 		<mapping resource="cn/itcast/a_hello/Employee.hbm.xml"/>
+		-->
 		
 	</session-factory>
 </hibernate-configuration>

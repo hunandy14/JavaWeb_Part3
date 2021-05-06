@@ -6,7 +6,7 @@ import cn.itcast.a_hello.Employee;
 
 public class App {
 	
-	private EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+	private IEmployeeDao empDao = new EmployeeDaoImpl();
 
 	@Test
 	public void testFindById() {

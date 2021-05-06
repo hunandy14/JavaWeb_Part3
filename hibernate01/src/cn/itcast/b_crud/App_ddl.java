@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class App_ddl {
 
-	// 自动建表
+	// 使用代碼的方式自动建表
 	@Test
 	public void testCreate() throws Exception {
 		// 创建配置管理类对象
@@ -16,10 +16,11 @@ public class App_ddl {
 		
 		// 创建工具类对象
 		SchemaExport export = new SchemaExport(config);
-		// 建表
+		
+		// 建表(已存在會砍掉重建)
 		// 第一个参数： 是否在控制台打印建表语句
 		// 第二个参数： 是否执行脚本
-		export.create(true, true);
+		export.create(true, false);
 	}
 }
 

@@ -51,7 +51,7 @@ public class App2 {
 	public void testUpdate() throws Exception {
 		// 对象
 		Employee emp = new Employee();
-		emp.setEmpId(18);
+		emp.setEmpId(1);
 		emp.setEmpName("chg");
 		
 		// 创建session
