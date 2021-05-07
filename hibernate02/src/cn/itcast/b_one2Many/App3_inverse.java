@@ -52,13 +52,13 @@ public class App3_inverse {
 	@Test
 	public void get() {
 		Session session = sf.openSession();
-		session.beginTransaction();
+//		session.beginTransaction();
 		
 		Dept dept = (Dept) session.get(Dept.class, 1);
 		System.out.println(dept.getDeptName());
 		System.out.println(dept.getEmps());
 		
-		session.getTransaction().commit();
+//		session.getTransaction().commit();
 		session.close();
 	}
 	
