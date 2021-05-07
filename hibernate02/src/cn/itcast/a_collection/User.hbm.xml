@@ -19,9 +19,11 @@
 				element 指定集合表的其他字段
 					type 元素类型，一定要指定
 		 -->
-		 <set name="address" table="t_address">
-		 	<key column="uid"></key>
-		 	<element column="address" type="string"></element>
+		 
+		 
+		 <set name="address" table="t_address"> <!-- UserBean中的 address 對應到第二個表 t_address-->
+		 	<key column="uid"></key> 							<!-- 第二個表的主鍵名稱是uid -->
+		 	<element column="address" type="string"></element> 	<!-- 第二個表的其他字段 -->
 		 </set>
 		 
 		 <!-- 
@@ -30,7 +32,9 @@
 		  -->
 		  <list name="addressList" table="t_addressList">
 		  	  <key column="uid"></key>
-		  	  <list-index column="idx"></list-index>
+		  	  <!-- list在表裡沒有辦法表達存入順序，自己要多建一個來表示 
+		  	  存入是沒問題，但是讀的時候會不知道該用什麼順序讀(uid可能跳號的)，會導致讀時候跟存的時候不同-->
+		  	  <list-index column="idx"></list-index> 
 		  	  <element column="address" type="string"></element>
 		  </list>
 		  

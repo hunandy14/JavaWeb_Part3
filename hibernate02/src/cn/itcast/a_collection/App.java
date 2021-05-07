@@ -72,7 +72,7 @@ public class App {
 		session.beginTransaction();
 		
 		// 获取
-		User user = (User) session.get(User.class, 3); // 及时加载
+		User user = (User) session.get(User.class, 2); // 及时加载
 		System.out.println(user.getUserId());
 		System.out.println(user.getUserName());
 		

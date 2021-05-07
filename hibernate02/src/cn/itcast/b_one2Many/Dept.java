@@ -28,8 +28,8 @@ public class Dept {
 	public void setEmps(Set<Employee> emps) {
 		this.emps = emps;
 	}
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "Dept [deptId=" + deptId + ", deptName=" + deptName + "]";
+	}
 }

@@ -33,6 +33,9 @@ public class Employee {
 	public void setDept(Dept dept) {
 		this.dept = dept;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName
+				+ ", salary=" + salary + ", dept=" + dept + "]";
+	}
 }
