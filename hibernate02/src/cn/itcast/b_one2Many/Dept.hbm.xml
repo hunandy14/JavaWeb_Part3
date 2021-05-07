@@ -21,7 +21,8 @@
 			
 			inverse=false  set集合映射的默认值； 表示有控制权
 		 -->
-		 <set name="emps" cascade="save-update,delete" table="t_employee" inverse="true">   <!-- table="t_employee" -->
+		 <set name="emps" cascade="save-update,delete" table="t_employee" inverse="false">   <!-- table="t_employee" -->
+		 													<!-- 這邊用true的話就不能透過在部門添加員工的方式 來讓員工表有部門代號 -->
 		 	 <key column="dept_id"></key>
 		 	 <one-to-many class="Employee"/>
 		 </set>

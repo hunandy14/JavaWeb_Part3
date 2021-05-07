@@ -5,8 +5,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.junit.Test;
 
-import cn.itcast.a_collection.User;
-
 public class App3_inverse {
 	
 	private static SessionFactory sf;
@@ -40,8 +38,8 @@ public class App3_inverse {
 		
 
 		// 保存
-		session.save(emp_zs);
-		session.save(emp_ls);
+//		session.save(emp_zs);
+//		session.save(emp_ls);
 		session.save(dept); // 保存部门，部门下所有的员工  
 		
 		session.getTransaction().commit();

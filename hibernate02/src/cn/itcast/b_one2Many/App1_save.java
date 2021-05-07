@@ -5,8 +5,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.junit.Test;
 
-import cn.itcast.a_collection.User;
-
 public class App1_save {
 	
 	private static SessionFactory sf;
