@@ -1,11 +1,12 @@
 package cn.itcast.c_many2many;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.junit.Test;
-
-import cn.itcast.a_collection.User;
 
 public class App1_save {
 	
@@ -22,7 +23,7 @@ public class App1_save {
 	@Test
 	public void save() {
 		Session session = sf.openSession();
-		session.beginTransaction();
+		
 		
 		/*
 		 * 模拟数据： 
@@ -50,27 +51,44 @@ public class App1_save {
 		
 		
 		// 保存
+		session.beginTransaction();
 //		session.save(dev_cj);
 //		session.save(dev_wc);
 //		session.save(dev_lz);
-		
 		session.save(prj_ds);
-		session.save(prj_oa);   // 必须要设置级联保存 
-		
+		session.save(prj_oa);   // project的休眠文件中的dev標籤
+								// 要設置聯集保存前面三行就可以省掉了
 		session.getTransaction().commit();
 		session.close();
+		
+		//	測試數據能不從員工方查到所在部門的信息
+		queryDeveloper(2);
 	}
 	
-	
-	
-	@Test
-	public void bak() {
-		
+	private Developer queryDeveloper(int idx){
+		Developer dev = null;
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
+		//	測試數據能不從員工方查到所在部門的信息
+		dev = (Developer) session.get(Developer.class, idx);
 		session.getTransaction().commit();
+		
+		// 不知道為什麼在關閉前沒先打印就會報錯，報錯是因為會話被關閉了
+		// 反過來為什麼打印可以搞定這件事情，讓dev被有效的傳出去
+		System.err.println(dev);
 		session.close();
+		return dev;
 	}
+	
+	
+//	@Test
+//	public void bak() {
+//		Session session = sf.openSession();
+//		session.beginTransaction();
+//		
+//		session.getTransaction().commit();
+//		session.close();
+//	}
 	
 }

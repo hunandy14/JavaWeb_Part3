@@ -34,6 +34,11 @@ public class Developer {
 	public void setProjects(Set<Project> projects) {
 		this.projects = projects;
 	}
+	@Override
+	public String toString() {
+		return "Developer [d_id=" + d_id + ", d_name=" + d_name + ", projects="
+				+ projects + "]";
+	}
 	
 	
 }
