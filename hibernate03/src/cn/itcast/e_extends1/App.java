@@ -32,6 +32,7 @@ public class App {
 		
 		// 获取时候注意：当写hql查询的使用，通过父类查询必须写上类的全名
 		Query q = session.createQuery("from cn.itcast.e_extends1.Animal");
+		@SuppressWarnings("unchecked")
 		List<Animal> list = q.list();
 		System.out.println(list);
 		

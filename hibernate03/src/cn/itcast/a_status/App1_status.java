@@ -1,8 +1,5 @@
 package cn.itcast.a_status;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;

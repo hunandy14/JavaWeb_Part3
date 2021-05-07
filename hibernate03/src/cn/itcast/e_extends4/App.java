@@ -1,8 +1,5 @@
 package cn.itcast.e_extends4;
 
-import java.util.List;
-
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;

@@ -1,6 +1,5 @@
 package cn.itcast.c_one2one2;
 
-import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;

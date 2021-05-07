@@ -1,8 +1,5 @@
 package cn.itcast.a_status;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
@@ -26,6 +23,7 @@ public class App2_cache {
 		// 查询
 		user = (User) session.get(User.class, 5);// 先检查缓存中是否有数据，如果有不查询数据库，直接从缓存中获取
 		user = (User) session.get(User.class, 5);// 先检查缓存中是否有数据，如果有不查询数据库，直接从缓存中获取
+		System.err.println(user);
 		
 		session.getTransaction().commit();
 		session.close();
