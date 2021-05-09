@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="hinernate_tester"
+  id="myeclipse.1620577134548"
+  context-root="/hinernate_tester"
+  j2ee-spec="6.0"
+  archive="hinernate_tester.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
