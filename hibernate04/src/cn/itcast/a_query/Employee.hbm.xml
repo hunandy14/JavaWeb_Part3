@@ -12,7 +12,7 @@
 		<property name="empName" length="20"></property>
 		<property name="salary" type="double"></property>
 		
-		<many-to-one name="dept" column="dept_id" class="Dept"></many-to-one>
+		<many-to-one name="dept" cascade="save-update,delete" column="dept_id" class="Dept"></many-to-one>
 		 
 	</class>
 	

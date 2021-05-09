@@ -1,9 +1,6 @@
 package cn.itcast.a_query;
 
-import java.util.List;
-
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,6 +17,26 @@ public class App_criteria {
 			.addClass(Dept.class)   
 			.addClass(Employee.class)   // 测试时候使用
 			.buildSessionFactory();
+	}
+	
+	@Test
+	public void add() {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		
+		// 新增項目
+		Dept dept = new Dept();
+		dept.setDeptName("開發部門");
+		Employee emp = new Employee();
+		emp.setEmpName("chg");
+		emp.setSalary(9999);
+		emp.setDept(dept);
+		
+		// 聯集保存要加 休眠表要加 cascade="save-update,delete"
+		session.save(emp);
+		
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	/*
