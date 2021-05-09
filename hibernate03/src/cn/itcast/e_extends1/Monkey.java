@@ -1,6 +1,6 @@
 package cn.itcast.e_extends1;
 
-public class Monkey {
+public class Monkey extends Animal {
 	// 吃香蕉
 	private String eatBanana;
 
@@ -9,5 +9,9 @@ public class Monkey {
 	}
 	public void setEatBanana(String eatBanana) {
 		this.eatBanana = eatBanana;
+	}
+	@Override
+	public String toString() {
+		return "Monkey [eatBanana=" + eatBanana + "]";
 	}
 }

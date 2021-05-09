@@ -8,13 +8,13 @@
  -->
 <hibernate-mapping package="cn.itcast.e_extends1">
 	
-	<class name="Cat" table="t_Cat">
+	<class name="Monkey" table="t_Monkey">
 		<!-- 简单继承映射： 父类属性直接写 -->
 		<id name="id">
 			<generator class="native"></generator>
 		</id>
 		<property name="name"></property>
-		<property name="catchMouse"></property>					 
+		<property name="eatBanana"></property>					 
 	</class>
 	
 

@@ -14,21 +14,44 @@ public class App {
 	static {
 		sf = new Configuration()
 			.configure()
-			.addClass(Cat.class)   
+			.addClass(Cat.class)
+			.addClass(Monkey.class)
 			.buildSessionFactory();
 	}
 
 	@Test
-	public void getSave() {
+	public void getSave1() {
 		
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
 		// 保存
-//		Cat cat = new Cat();
-//		cat.setName("大花猫");
-//		cat.setCatchMouse("抓小老鼠");
-//		session.save(cat);
+		Cat cat = new Cat();
+		cat.setName("大花猫");
+		cat.setCatchMouse("抓小老鼠");
+		session.save(cat);
+		
+		// 获取时候注意：当写hql查询的使用，通过父类查询必须写上类的全名
+		Query q = session.createQuery("from cn.itcast.e_extends1.Animal");
+		@SuppressWarnings("unchecked")
+		List<Animal> list = q.list();
+		System.out.println(list);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+	@Test
+	public void getSave2() {
+		
+		Session session = sf.openSession();
+		session.beginTransaction();
+		
+		// 保存
+		Monkey monkey = new Monkey();
+		monkey.setName("孫悟空");
+		monkey.setEatBanana("吃香蕉");
+		session.save(monkey);
 		
 		// 获取时候注意：当写hql查询的使用，通过父类查询必须写上类的全名
 		Query q = session.createQuery("from cn.itcast.e_extends1.Animal");
