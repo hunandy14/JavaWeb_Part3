@@ -22,12 +22,12 @@
 			union-subclass  
 				table 指定为表名, 表的主键即为id列
 		-->
-		<union-subclass name="Cat" table="t_cat">
+		<union-subclass name="Cat" table="t3_cat">
 			<property name="catchMouse"></property>
 		</union-subclass>
 		
 		<!-- 子类：猴子  t_monkey -->
-		<union-subclass name="Monkey" table="t_monkey">
+		<union-subclass name="Monkey" table="t3_monkey">
 			<property name="eatBanana"></property>
 		</union-subclass>
 		
