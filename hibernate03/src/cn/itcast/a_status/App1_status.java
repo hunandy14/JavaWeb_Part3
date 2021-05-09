@@ -22,25 +22,28 @@ public class App1_status {
 		session.beginTransaction();
 		
 		// 创建对象						【临时状态】
-//		User user = new User();
-//		user.setUserName("Jack22222");
+		User user = new User();
+		user.setUserName("Jack22222");
 		// 保存							【持久化状态】
-//		session.save(user);		
-//		user.setUserName("Jack333333");  // 会反映到数据库
+		session.save(user);		
+		user.setUserName("Jack333333");  // 会反映到数据库
 		
 		
 		// 查询
-		User user = (User) session.get(User.class, 5);
-		user.setUserName("Tomcat");// hibernate会自动与数据库匹配（一级缓存），如果一样就更新数据库
+//		User user = (User) session.get(User.class, 5);
+//		user.setUserName("Tomcat");// hibernate会自动与数据库匹配（一级缓存），如果一样就更新数据库
+//		
+//		session.getTransaction().commit();
+//		session.close();
+//		
 		
-		session.getTransaction().commit();
-		session.close();
-		
-		
-		user.setUserName("Jack444444444");
+//		user.setUserName("Jack444444444");
 		// 打印							【游离状态】
 		System.out.println(user.getUserId());
 		System.out.println(user.getUserName());
+		
+		session.getTransaction().commit();
+		session.close();
 	}
 	
 	

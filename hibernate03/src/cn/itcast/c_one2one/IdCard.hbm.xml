@@ -14,6 +14,8 @@
 		<!-- 
 			一对一映射，有外键方
 			unique="true"   给外键字段添加唯一约束
+			
+			name = IdCard中的成員變數名字
 		 -->
 		 <many-to-one name="user" unique="true" column="user_id" class="User" cascade="save-update"></many-to-one>
 			

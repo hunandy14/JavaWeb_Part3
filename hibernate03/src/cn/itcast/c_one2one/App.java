@@ -25,10 +25,12 @@ public class App {
 		// 用户
 		User user = new User();
 		user.setUserName("Jack");
+				
 		// 身份证
 		IdCard idCard = new IdCard();
 		idCard.setCardNum("441202XXX");
-		idCard.setPlace("广州XXX");
+		idCard.setPlace("广州XXX2");
+		
 		// 关系
 		idCard.setUser(user);
 		

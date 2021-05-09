@@ -6,6 +6,9 @@
 	<!-- 通常，一个session-factory节点代表一个数据库 -->
 	<session-factory>
 	
+		<!-- 不檢查避免沒加入jar包直接報錯了 -->
+		<property name="javax.persistence.validation.mode">none</property>
+		
 		<!-- 1. 数据库连接配置 -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql:///hib_demo</property>
@@ -22,9 +25,10 @@
 		<property name="hibernate.show_sql">true</property>
 		<!-- 2.2 格式化sql
 		<property name="hibernate.format_sql">true</property>  -->
-		<!-- 2.3 自动建表  -->
+		<!-- 2.3 自动建表  
 		<property name="hibernate.hbm2ddl.auto">create</property>
-		
+		-->
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<!-- 3. 加载所有映射 
 		<mapping resource="cn/itcast/a_hello/Employee.hbm.xml"/>
