@@ -1,16 +1,11 @@
 package cn.itcast.a_query;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.ScrollableResults;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.junit.Test;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class App_page {
 	
