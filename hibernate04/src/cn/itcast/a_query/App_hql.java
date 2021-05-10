@@ -103,10 +103,14 @@ public class App_hql {
 		//-- 统计t_employee表中，每个部门的人数
 		//数据库写法：SELECT dept_id, COUNT(*) FROM t_employee GROUP BY dept_id;
 		// HQL写法
+		
+		
 		Query q = session.createQuery("select e.dept, count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
 		Object obj = q.list();
-
-		System.out.println(obj);
+		List<Object> o2 = q.list();
+		
+		// 這裡如何取出 obj 的數值 
+		System.out.println(o2);
 		
 		session.getTransaction().commit();
 		session.close();
