@@ -1,5 +1,11 @@
 package cn.itcast.a_query;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -67,45 +73,47 @@ public class App_hql {
 //		q.setParameter(0, "财务部");
 //		System.out.println(q.list());
 		
-		// 条件查询： 命名参数
+		// 条件查询： 命名参数(把原本問號取代成有意義的變數)
 //		Query q = session.createQuery("from Dept d where deptId=:myId or deptName=:name");
-//		q.setParameter("myId", 12);
+//		q.setParameter("myId", 6);
 //		q.setParameter("name", "财务部");
 //		System.out.println(q.list());
 		
-		// 范围
+		// 范围 (查詢ID一定範圍內的)
 //		Query q = session.createQuery("from Dept d where deptId between ? and ?");
-//		q.setParameter(0, 1);
-//		q.setParameter(1, 20);
+//		q.setParameter(0, 1);  // 從1開始查
+//		q.setParameter(1, 20); // 查到20為止
 //		System.out.println(q.list());
 		
-		// 模糊
+		// 模糊 (一般的搜尋功能)
 //		Query q = session.createQuery("from Dept d where deptName like ?");
-//		q.setString(0, "%部%");
+//		q.setString(0, "%關%");
 //		System.out.println(q.list());
 		
 
-		// e. 聚合函数统计
+		// e. 聚合函数统计 - 查詢總共有幾條信息
+		//   [1] 效率更高 但是這裡休眠表不適用只能用 * 
+		// 打字段舊名稱則統計那個字段有幾個)
+		
 //		Query q = session.createQuery("select count(*) from Dept");
 //		Long num = (Long) q.uniqueResult();
 //		System.out.println(num);
 		
 		// f. 分组查询
 		//-- 统计t_employee表中，每个部门的人数
-		//数据库写法：SELECT dept_id,COUNT(*) FROM t_employee GROUP BY dept_id;
+		//数据库写法：SELECT dept_id, COUNT(*) FROM t_employee GROUP BY dept_id;
 		// HQL写法
-//		Query q = session.createQuery("select e.dept, count(*) from Employee e group by e.dept");
-//		System.out.println(q.list());
-		
-	
-		
+		Query q = session.createQuery("select e.dept, count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
+		Object obj = q.list();
+
+		System.out.println(obj);
 		
 		session.getTransaction().commit();
 		session.close();
 	}
 	
 	// g. 连接查询
-	@Test
+//	@Test
 	public void join() {
 		
 		Session session = sf.openSession();
@@ -126,7 +134,7 @@ public class App_hql {
 	}
 	
 	// g. 连接查询 - 迫切连接
-	@Test
+//	@Test
 	public void fetch() {
 		
 		Session session = sf.openSession();
@@ -145,7 +153,7 @@ public class App_hql {
 	}
 	
 	// HQL查询优化
-	@Test
+//	@Test
 	public void hql_other() {
 		Session session = sf.openSession();
 		session.beginTransaction();

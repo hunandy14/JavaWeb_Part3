@@ -26,9 +26,9 @@ public class App_criteria {
 		
 		// 新增項目
 		Dept dept = new Dept();
-		dept.setDeptName("開發部門");
+		dept.setDeptName("财务部");
 		Employee emp = new Employee();
-		emp.setEmpName("chg");
+		emp.setEmpName("itcast");
 		emp.setSalary(9999);
 		emp.setDept(dept);
 		
@@ -56,7 +56,7 @@ public class App_criteria {
 		
 		Criteria criteria = session.createCriteria(Employee.class);
 		// 构建条件
-		criteria.add(Restrictions.eq("empId", 12));
+		criteria.add(Restrictions.eq("empId", 1));
 //		criteria.add(Restrictions.idEq(12));  // 主键查询
 		
 		System.out.println(criteria.list());
