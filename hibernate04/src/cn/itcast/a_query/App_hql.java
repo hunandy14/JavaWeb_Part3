@@ -12,6 +12,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.junit.Test;
 
+import cn.itcast.utils.QueryList;
+
 public class App_hql {
 	
 	private static SessionFactory sf;
@@ -106,15 +108,9 @@ public class App_hql {
 		
 		
 		Query q = session.createQuery("select e.dept, count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
-		Object obj = q.list();
-		List<Object> o2 = q.list();
-		
-		for (Iterator iterator = o2.iterator(); iterator.hasNext();) {
-			Object object = (Object) iterator.next();
-			System.out.println(object);
-		}
-		// 這裡如何取出 obj 的數值 
-//		System.out.println(o2);
+		List<Object> queryList = q.list();
+		QueryList.out(queryList);
+
 		
 		session.getTransaction().commit();
 		session.close();
@@ -136,7 +132,7 @@ public class App_hql {
 //		Query q = session.createQuery("from Employee e right join e.dept");
 		
 		List<Object> queryList = q.list();
-		queryList_out(queryList);
+		QueryList.out(queryList);
 		
 		
 		session.getTransaction().commit();
@@ -144,68 +140,41 @@ public class App_hql {
 	}
 	
 	// g. 连接查询 - 迫切连接
-	@Test
+//	@Test
 	public void fetch() {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
 		//1) 迫切内连接    【使用fetch, 会把右表的数据，填充到左表对象中！】
-		Query q = session.createQuery("from Dept d inner join fetch d.emps");
+//		Query q = session.createQuery("from Dept d inner join fetch d.emps");
 		
 		//2) 迫切左外连接
-//		Query q = session.createQuery("from Dept d left join fetch d.emps");
+		Query q = session.createQuery("from Dept d left join fetch d.emps");
 		
 		List<Object> queryList = q.list();
-		queryList_out(queryList);
+		QueryList.out(queryList);
 		
 		session.getTransaction().commit();
 		session.close();
 	}
 	
 	// HQL查询优化
-//	@Test
+	@Test
 	public void hql_other() {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		// HQL写死
 //		Query q = session.createQuery("from Dept d where deptId < 10 ");
 		
-		// HQL 放到映射文件中
+		// HQL 放到映射文件中(根據getAllDept去休眠表查到對應的語句)
 		Query q = session.getNamedQuery("getAllDept");
-		q.setParameter(0, 10);
-		System.out.println(q.list());
+		// 休眠表中的語句有問號，這裡表示地0個問號傳4進去(deptId < ?)
+		q.setParameter(0, 4);
+		
+		QueryList.out(q.list());
 		
 		session.getTransaction().commit();
 		session.close();
-	}
-	
-
-	// 打印由Query查詢所得到的數組的內容
-	private void queryList_out(List<Object> queryList) {
-	    // 邏輯判斷
-	    if (queryList == null) {return;}
-	    if (queryList.size() < 1) {return;}
-	    
-	    // 第二層為陣列
-	    if(queryList.get(0) instanceof Object[]){
-	        for (int j = 0; j < queryList.size(); j++) {
-	            System.err.println("List["+j+"]::");
-	            for (Object object : (Object[])queryList.get(j)) {
-	                System.err.println("  "+object);
-	            }
-	        }
-	        
-	    // 第二層為物件
-	    } else if(queryList.get(0) instanceof Object){
-	    	if (queryList.get(0).toString().length() > 16){
-	    		for (int j = 0; j < queryList.size(); j++) {
-		            System.err.println("List["+j+"]::");
-		    		System.err.println("  "+queryList.get(j));
-		        }
-	    	} else {
-	    		System.err.println(queryList);
-	    	}
-	    }
 	}
 }
 

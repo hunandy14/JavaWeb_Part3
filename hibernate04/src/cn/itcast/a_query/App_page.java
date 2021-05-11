@@ -1,11 +1,15 @@
 package cn.itcast.a_query;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.ScrollableResults;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.junit.Test;
+
+import cn.itcast.utils.QueryList;
 
 public class App_page {
 	
@@ -19,6 +23,7 @@ public class App_page {
 	}
 
 	// 分页查询
+	@SuppressWarnings("unchecked")
 	@Test
 	public void all() {
 		
@@ -37,7 +42,8 @@ public class App_page {
 		 q.setMaxResults(3);
 		 
 		 // 查询
-		 System.out.println(q.list());
+//		 System.out.println(q.list());
+		 QueryList.out(q.list());
 		 System.out.println("总记录数：" + totalCount);
 		
 		session.getTransaction().commit();

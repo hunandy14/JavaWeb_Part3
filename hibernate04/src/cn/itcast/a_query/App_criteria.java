@@ -8,6 +8,8 @@ import org.hibernate.classic.Session;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 
+import cn.itcast.utils.QueryList;
+
 public class App_criteria {
 	
 	private static SessionFactory sf;
@@ -48,6 +50,7 @@ public class App_criteria {
 	 */
 	
 	//4)	Criteria 查询，
+	@SuppressWarnings("unchecked")
 	@Test
 	public void criteria() {
 		
@@ -59,7 +62,7 @@ public class App_criteria {
 		criteria.add(Restrictions.eq("empId", 1));
 //		criteria.add(Restrictions.idEq(12));  // 主键查询
 		
-		System.out.println(criteria.list());
+		QueryList.out(criteria.list());
 		
 		
 		session.getTransaction().commit();
@@ -68,6 +71,7 @@ public class App_criteria {
 	
 	// 5)	SQLQuery， 本地SQL查询
 	// 不能跨数据库平台： 如果该了数据库，sql语句有肯能要改。
+	@SuppressWarnings("unchecked")
 	@Test
 	public void sql() {
 		
@@ -76,12 +80,12 @@ public class App_criteria {
 		
 		SQLQuery q = session.createSQLQuery("SELECT * FROM t_Dept limit 5;")
 			.addEntity(Dept.class);  // 也可以自动封装
-		System.out.println(q.list());
+		
+		QueryList.out(q.list());
 		
 		session.getTransaction().commit();
 		session.close();
 	}
-	
 }
 
 
