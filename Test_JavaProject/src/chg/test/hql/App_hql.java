@@ -50,25 +50,27 @@ public class App_hql {
 		
 		Query q = session.createQuery("select e.dept, count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
 		
-		List<Object> obj = q.list();
-		for (Object objItem : obj) {
-			// 用父類別轉出
-			Object[] item = (Object[])objItem;
-//			System.err.println("[" + item[0] + ", " + item[1] + "]");
-			
-			// 用實際類別轉出
-			Dept dept = (Dept) ((Object[])objItem)[0];
-			Long idx  = (Long) ((Object[])objItem)[1];
-			System.err.println("[" + dept + ", " + idx + "]");
-		}
-		
-// 這裡如何取出 obj 的數值 
-//		System.out.println(obj);
+		// 取出數據
+		List<Object[]> queryList = q.list();
+		printQueryList(queryList);
 		
 		session.getTransaction().commit();
 		session.close();
 	}
+	// 打印由Query查詢所得到的數組的內容
+	private void printQueryList(List<Object[]> obj_list) {
+		for (int j = 0; j < obj_list.size(); j++) {
+			System.err.println("List["+j+"]::");
+			Object[] obj_item = obj_list.get(j);
+			for (int i = 0; i < obj_item.length; i++) {
+				Object obj = obj_item[i];
+				System.err.println("  "+obj);
+			}
+		}
+	}
 }
+
+
 
 
 
