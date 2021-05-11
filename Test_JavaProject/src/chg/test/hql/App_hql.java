@@ -9,6 +9,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.junit.Test;
 
+import chg.utils.QueryList;
+
 public class App_hql {
 	
 	private static SessionFactory sf;
@@ -59,53 +61,17 @@ public class App_hql {
 		// 取出數據1
 		
 		List<Object> queryList1 = q1.list();
-		queryList_out(queryList1);
+		QueryList.out(queryList1);
 		
 		// 取出數據2
 		List<Object> queryList2 = q2.list();
-		queryList_out(queryList2);
+		QueryList.out(queryList2);
 		
 		session.getTransaction().commit();
 		session.close();
 	}
 
-	// 打印由Query查詢所得到的數組的內容
-	private void queryList_out(List<Object> queryList) {
-	    // 邏輯判斷
-	    if (queryList == null) {return;}
-	    if (queryList.size() < 1) {return;}
 
-	    // 第二層為陣列
-	    if(queryList.get(0) instanceof Object[]){
-	        for (int j = 0; j < queryList.size(); j++) {
-	            System.err.println("List["+j+"]::");
-	            for (Object object : (Object[])queryList.get(j)) {
-	                System.err.println("  "+object);
-	            }
-	        }
-
-	    // 第二層為物件
-	    } else if(queryList.get(0) instanceof Object){
-	        if (queryList.get(0).toString().length() > 16){
-	            for (int j = 0; j < queryList.size(); j++) {
-	                System.err.println("List["+j+"]::");
-	                System.err.println("  "+queryList.get(j));
-	            }
-	        } else {
-	            System.err.println(queryList);
-	        }
-	    }
-	}
-	
-	// 判斷queryList第二層是否為陣列
-	private void queryList_isArray(Object queryObject) {
-		// 判斷第二層是陣列還是物件
-		if(queryObject instanceof Object[]){
-			System.err.println("Object[]");
-		} else if(queryObject instanceof Object){
-			System.err.println("Object");
-		}
-	}
 }
 
 
