@@ -6,6 +6,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 import org.junit.Test;
 
+import cn.itcast.utils.QueryList;
+
 public class App {
 	
 	private static SessionFactory sf;
@@ -23,7 +25,7 @@ public class App {
 		Session session1 = sf.openSession();
 		session1.beginTransaction();
 		// a. 查询一次
-		Dept dept = (Dept) session1.get(Dept.class, 10);
+		Dept dept = (Dept) session1.get(Dept.class, 1);
 		dept.getEmps().size();// 集合
 		session1.getTransaction().commit();
 		session1.close();
@@ -33,8 +35,8 @@ public class App {
 		// 第二个session
 		Session session2 = sf.openSession();
 		session2.beginTransaction();
-		// a. 查询一次
-		dept = (Dept) session2.get(Dept.class, 10);  // 二级缓存配置好； 这里不查询数据库
+		// b. 查询第二次(二级缓存配置好； 这里還沒出去就茶道緩存有，直接取不查詢數據庫)
+		dept = (Dept) session2.get(Dept.class, 1);
 		dept.getEmps().size();
 		
 		session2.getTransaction().commit();
@@ -44,19 +46,22 @@ public class App {
 	
 	@Test
 	public void listCache() {
+		Query q = null;
+		// HQL查询 
 		Session session1 = sf.openSession();
 		session1.beginTransaction();
-		// HQL查询  【setCacheable  指定从二级缓存找，或者是放入二级缓存】
-		Query q = session1.createQuery("from Dept").setCacheable(true);
-		System.out.println(q.list());
+		q = session1.createQuery("from Dept where deptId=1");
+		q.setCacheable(true); 			// 【setCacheable  指定从二级缓存找，或者是放入二级缓存】
+		QueryList.out(q.list());
 		session1.getTransaction().commit();
 		session1.close();
 		
 		
 		Session session2 = sf.openSession();
 		session2.beginTransaction();
-		q = session2.createQuery("from Dept").setCacheable(true);
-		System.out.println(q.list());  // 不查询数据库： 需要开启查询缓存
+		q = session2.createQuery("from Dept where deptId=1");
+		q.setCacheable(true);			// 【setCacheable  指定从二级缓存找，或者是放入二级缓存】
+		QueryList.out(q.list());	// 不查询数据库： 需要开启查询缓存
 		session2.getTransaction().commit();
 		session2.close();
 	}
