@@ -1,5 +1,6 @@
 package chg.test.hql;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -17,6 +18,10 @@ public class App_hql {
 			.addClass(Dept.class)   
 			.addClass(Employee.class)   // 测试时候使用
 			.buildSessionFactory();
+	}
+	@Test
+	public void unchecked(){
+		
 	}
 //	@Test
 	public void add() {
@@ -52,6 +57,7 @@ public class App_hql {
 		Query q2 = session.createQuery("select count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
 		
 		// 取出數據1
+		
 		List<Object> queryList1 = q1.list();
 		queryList_out(queryList1);
 		
@@ -68,6 +74,7 @@ public class App_hql {
 	    // 邏輯判斷
 	    if (queryList == null) {return;}
 	    if (queryList.size() < 1) {return;}
+
 	    // 第二層為陣列
 	    if(queryList.get(0) instanceof Object[]){
 	        for (int j = 0; j < queryList.size(); j++) {
@@ -76,11 +83,17 @@ public class App_hql {
 	                System.err.println("  "+object);
 	            }
 	        }
+
 	    // 第二層為物件
 	    } else if(queryList.get(0) instanceof Object){
-	    	int len = queryList.get(0).toString().length();
-	    	System.err.println("###Len="+len);
-	        System.err.println(queryList);
+	        if (queryList.get(0).toString().length() > 16){
+	            for (int j = 0; j < queryList.size(); j++) {
+	                System.err.println("List["+j+"]::");
+	                System.err.println("  "+queryList.get(j));
+	            }
+	        } else {
+	            System.err.println(queryList);
+	        }
 	    }
 	}
 	
