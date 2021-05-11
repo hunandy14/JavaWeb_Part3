@@ -48,24 +48,49 @@ public class App_hql {
 		//数据库写法：SELECT dept_id, COUNT(*) FROM t_employee GROUP BY dept_id HAVING COUNT(*)>0;
 		// HQL写法
 		
-		Query q = session.createQuery("select e.dept, count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
+		Query q1 = session.createQuery("select e.dept, count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
+		Query q2 = session.createQuery("select count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
 		
-		// 取出數據
-		List<Object[]> queryList = q.list();
-		printQueryList(queryList);
+		// 取出數據1
+		List<Object> queryList1 = q1.list();
+		queryList_out(queryList1);
+		
+		// 取出數據2
+		List<Object> queryList2 = q2.list();
+		queryList_out(queryList2);
 		
 		session.getTransaction().commit();
 		session.close();
 	}
+
 	// 打印由Query查詢所得到的數組的內容
-	private void printQueryList(List<Object[]> obj_list) {
-		for (int j = 0; j < obj_list.size(); j++) {
-			System.err.println("List["+j+"]::");
-			Object[] obj_item = obj_list.get(j);
-			for (int i = 0; i < obj_item.length; i++) {
-				Object obj = obj_item[i];
-				System.err.println("  "+obj);
-			}
+	private void queryList_out(List<Object> queryList) {
+	    // 邏輯判斷
+	    if (queryList == null) {return;}
+	    if (queryList.size() < 1) {return;}
+	    // 第二層為陣列
+	    if(queryList.get(0) instanceof Object[]){
+	        for (int j = 0; j < queryList.size(); j++) {
+	            System.err.println("List["+j+"]::");
+	            for (Object object : (Object[])queryList.get(j)) {
+	                System.err.println("  "+object);
+	            }
+	        }
+	    // 第二層為物件
+	    } else if(queryList.get(0) instanceof Object){
+	    	int len = queryList.get(0).toString().length();
+	    	System.err.println("###Len="+len);
+	        System.err.println(queryList);
+	    }
+	}
+	
+	// 判斷queryList第二層是否為陣列
+	private void queryList_isArray(Object queryObject) {
+		// 判斷第二層是陣列還是物件
+		if(queryObject instanceof Object[]){
+			System.err.println("Object[]");
+		} else if(queryObject instanceof Object){
+			System.err.println("Object");
 		}
 	}
 }
