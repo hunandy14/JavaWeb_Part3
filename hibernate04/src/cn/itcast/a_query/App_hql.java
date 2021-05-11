@@ -1,10 +1,10 @@
 package cn.itcast.a_query;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -31,7 +31,7 @@ public class App_hql {
 		5)	SQLQuery， 本地SQL查询
 
 	 */
-	@Test
+//	@Test
 	public void all() {
 		
 		Session session = sf.openSession();
@@ -101,7 +101,7 @@ public class App_hql {
 		
 		// f. 分组查询
 		//-- 统计t_employee表中，每个部门的人数
-		//数据库写法：SELECT dept_id, COUNT(*) FROM t_employee GROUP BY dept_id;
+		//数据库写法：SELECT dept_id, COUNT(*) FROM t_employee GROUP BY dept_id HAVING COUNT(*)>0;
 		// HQL写法
 		
 		
@@ -109,8 +109,12 @@ public class App_hql {
 		Object obj = q.list();
 		List<Object> o2 = q.list();
 		
+		for (Iterator iterator = o2.iterator(); iterator.hasNext();) {
+			Object object = (Object) iterator.next();
+			System.out.println(object);
+		}
 		// 這裡如何取出 obj 的數值 
-		System.out.println(o2);
+//		System.out.println(o2);
 		
 		session.getTransaction().commit();
 		session.close();
@@ -119,38 +123,40 @@ public class App_hql {
 	// g. 连接查询
 //	@Test
 	public void join() {
-		
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
 		//1) 内连接   【映射已经配置好了关系，关联的时候，直接写对象的属性即可】
-//		Query q = session.createQuery("from Dept d inner join d.emps");
+		Query q = session.createQuery("from Dept d inner join d.emps");
 		
 		//2) 左外连接
 //		Query q = session.createQuery("from Dept d left join d.emps");
 
 		//3) 右外连接
-		Query q = session.createQuery("from Employee e right join e.dept");
-		q.list();
+//		Query q = session.createQuery("from Employee e right join e.dept");
+		
+		List<Object> queryList = q.list();
+		queryList_out(queryList);
+		
 		
 		session.getTransaction().commit();
 		session.close();
 	}
 	
 	// g. 连接查询 - 迫切连接
-//	@Test
+	@Test
 	public void fetch() {
-		
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
 		//1) 迫切内连接    【使用fetch, 会把右表的数据，填充到左表对象中！】
-//		Query q = session.createQuery("from Dept d inner join fetch d.emps");
-//		q.list();
+		Query q = session.createQuery("from Dept d inner join fetch d.emps");
 		
 		//2) 迫切左外连接
-		Query q = session.createQuery("from Dept d left join fetch d.emps");
-		q.list();
+//		Query q = session.createQuery("from Dept d left join fetch d.emps");
+		
+		List<Object> queryList = q.list();
+		queryList_out(queryList);
 		
 		session.getTransaction().commit();
 		session.close();
@@ -171,6 +177,35 @@ public class App_hql {
 		
 		session.getTransaction().commit();
 		session.close();
+	}
+	
+
+	// 打印由Query查詢所得到的數組的內容
+	private void queryList_out(List<Object> queryList) {
+	    // 邏輯判斷
+	    if (queryList == null) {return;}
+	    if (queryList.size() < 1) {return;}
+	    
+	    // 第二層為陣列
+	    if(queryList.get(0) instanceof Object[]){
+	        for (int j = 0; j < queryList.size(); j++) {
+	            System.err.println("List["+j+"]::");
+	            for (Object object : (Object[])queryList.get(j)) {
+	                System.err.println("  "+object);
+	            }
+	        }
+	        
+	    // 第二層為物件
+	    } else if(queryList.get(0) instanceof Object){
+	    	if (queryList.get(0).toString().length() > 16){
+	    		for (int j = 0; j < queryList.size(); j++) {
+		            System.err.println("List["+j+"]::");
+		    		System.err.println("  "+queryList.get(j));
+		        }
+	    	} else {
+	    		System.err.println(queryList);
+	    	}
+	    }
 	}
 }
 
