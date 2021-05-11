@@ -1,10 +1,6 @@
 package cn.itcast.a_query;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -34,6 +30,7 @@ public class App_hql {
 
 	 */
 //	@Test
+	@SuppressWarnings("unchecked")
 	public void all() {
 		
 		Session session = sf.openSession();
@@ -118,6 +115,7 @@ public class App_hql {
 	
 	// g. 连接查询
 //	@Test
+	@SuppressWarnings("unchecked")
 	public void join() {
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -141,6 +139,7 @@ public class App_hql {
 	
 	// g. 连接查询 - 迫切连接
 //	@Test
+	@SuppressWarnings("unchecked")
 	public void fetch() {
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -159,6 +158,7 @@ public class App_hql {
 	}
 	
 	// HQL查询优化
+	@SuppressWarnings("unchecked")
 	@Test
 	public void hql_other() {
 		Session session = sf.openSession();

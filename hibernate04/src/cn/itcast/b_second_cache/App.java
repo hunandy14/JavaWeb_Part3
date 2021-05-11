@@ -44,6 +44,7 @@ public class App {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void listCache() {
 		Query q = null;
