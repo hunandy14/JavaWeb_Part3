@@ -1,14 +1,15 @@
-package chg.test.hql;
+package chg.hibre;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.classic.Session;
 import org.junit.Test;
 
+import chg.entity.Dept;
+import chg.entity.Employee;
 import chg.utils.QueryList;
 
 public class App_hql {
@@ -21,32 +22,10 @@ public class App_hql {
 			.addClass(Employee.class)   // 测试时候使用
 			.buildSessionFactory();
 	}
-	@Test
-	public void unchecked(){
-		
-	}
-//	@Test
-	public void add() {
-		Session session = sf.openSession();
-		session.beginTransaction();
-		
-		// 新增項目
-		Dept dept = new Dept();
-		dept.setDeptName("測試部");
-		Employee emp = new Employee();
-		emp.setEmpName("itcast");
-		emp.setSalary(9999);
-		emp.setDept(dept);
-		
-		// 聯集保存要加 休眠表要加 cascade="save-update,delete"
-		session.save(emp);
-		
-		session.getTransaction().commit();
-		session.close();
-	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
-	public void all() {
+	public void hql() {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
@@ -59,7 +38,6 @@ public class App_hql {
 		Query q2 = session.createQuery("select count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
 		
 		// 取出數據1
-		
 		List<Object> queryList1 = q1.list();
 		QueryList.out(queryList1);
 		

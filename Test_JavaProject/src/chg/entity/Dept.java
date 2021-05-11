@@ -1,4 +1,4 @@
-package chg.test.hql;
+package chg.entity;
 
 import java.util.HashSet;
 import java.util.Set;

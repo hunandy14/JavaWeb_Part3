@@ -1,4 +1,4 @@
-package chg.test.hql;
+package chg.entity;
 
 public class Employee {
 
