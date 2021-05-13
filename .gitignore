@@ -2,6 +2,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/java
 # Edit at https://www.toptal.com/developers/gitignore?templates=java
 
+### User ###
+_LibPackage/_other
+
+
 ### Java ###
 # Compiled class file
 *.class
