@@ -2,7 +2,6 @@ package cn.itcast.e_anno2;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 //@Component("userService")  // userService加入ioc容器

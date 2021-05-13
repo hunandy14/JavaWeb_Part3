@@ -1,8 +1,5 @@
 package cn.itcast.e_anno2;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
 // 把当前对象加入ioc容器
 //@Component("userDao")   //  相当于bean.xml 【<bean id=userDao class=".." />】
 
