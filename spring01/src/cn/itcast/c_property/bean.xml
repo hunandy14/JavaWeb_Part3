@@ -11,13 +11,13 @@
 	
 	<!-- ###############对象属性赋值############### -->
 	<!--  1) 通过构造函数 -->
-	<bean id="user1" class="cn.itcast.c_property.User" scope="prototype">
+	<bean id="user1" class="cn.itcast.c_property.MVC.User" scope="prototype">
 		<constructor-arg value="100"></constructor-arg>
 		<constructor-arg value="Tom"></constructor-arg>
 	</bean>
 	
 	<!-- 2) 通过set方法给属性注入值 -->
-	<bean id="user" class="cn.itcast.c_property.User" scope="prototype">
+	<bean id="user2" class="cn.itcast.c_property.MVC.User" scope="prototype">
 		<property name="id" value="101"></property>
 		<property name="name" value="Jack"></property>
 	</bean>
@@ -26,26 +26,29 @@
 		案例：
 			action/service/dao
 	 -->
-	<!-- dao instance -->
-	<bean id="userDao" class="cn.itcast.c_property.UserDao"></bean>
+	<!-- dao instance 這個空值就好不用初始化參數 -->
+	<bean id="userDao" class="cn.itcast.c_property.MVC.UserDao"></bean>
 
-	<!-- service instance -->
-	<bean id="userService" class="cn.itcast.c_property.UserService">
+	<!-- service instance 這個有包含Dao物件要注入剛剛建的Dao物件-->
+	<bean id="userService" class="cn.itcast.c_property.MVC.UserService">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 	
-	<!-- action instance -->
-	<bean id="userAction1" class="cn.itcast.c_property.UserAction">
+	<!-- action instance 這個有包含Service要注入剛剛創建的Service物件-->
+	<bean id="userAction1" class="cn.itcast.c_property.MVC.UserAction">
 		<property name="userService" ref="userService"></property>
 	</bean>
 	
 	
-	<!-- ##############内部bean############## -->
-	<bean id="userAction2" class="cn.itcast.c_property.UserAction">
+	<!-- ##############内部bean############## 
+	有點類似匿名函式的意思，從內部匿名進去要用第二個就沒名稱可以引用
+	維護起來有時候可能沒有拆開來寫好用。
+	-->
+	<bean id="userAction2" class="cn.itcast.c_property.MVC.UserAction">
 		<property name="userService">
-			<bean class="cn.itcast.c_property.UserService">
+			<bean class="cn.itcast.c_property.MVC.UserService">
 				<property name="userDao">
-					<bean class="cn.itcast.c_property.UserDao"></bean>
+					<bean class="cn.itcast.c_property.MVC.UserDao"></bean>
 				</property>
 			</bean>
 		</property>
@@ -53,7 +56,7 @@
 	
 	
 	<!-- 
-		给对象属性注入值：
+		给对象属性注入值：-> 寫到文件p去了
 			# p 名称空间给对象的属性注入值
 			 (spring3.0以上版本才支持)
 	 -->

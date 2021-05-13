@@ -1,4 +1,4 @@
-package cn.itcast.c_property;
+package cn.itcast.c_property.MVC;
 
 public class UserService {
 	

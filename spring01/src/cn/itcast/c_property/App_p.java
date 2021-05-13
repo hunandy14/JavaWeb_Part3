@@ -5,6 +5,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.itcast.c_property.MVC.User;
+import cn.itcast.c_property.MVC.UserAction;
+
 public class App_p {
 
 	// 创建容器对象
@@ -16,8 +19,9 @@ public class App_p {
 		// 从容器中获取Action
 		UserAction userAction = (UserAction) ac.getBean("userAction");
 		userAction.execute();
-		
-		System.out.println(ac.getBean("user"));
+		// 從容器中取User
+		User user = (User) ac.getBean("user");
+		System.out.println(user);
 	}
 }
 
