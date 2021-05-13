@@ -7,9 +7,15 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd" default-autowire="byType">
+        http://www.springframework.org/schema/context/spring-context.xsd"
+    default-autowire="byType"
+>
 	
-	<!-- ###############自动装配############### -->  
+	<!-- ###############自动装配############### 
+	名字長一樣的話就自動把它塞進去，取名字要取好取一樣
+	userService裡面有一個userDao，這個userDao和spring配置中的userDao一樣
+	就自動給他塞進去。這個有壞處是後期維護困難，關係寫得不明顯
+	-->  
 	<bean id="userDao" class="cn.itcast.d_auto.UserDao"></bean>	
 	<bean id="userService" class="cn.itcast.d_auto.UserService"></bean>
 	
@@ -18,6 +24,7 @@
 	
 	
 	<!--   报错： 因为上面已经有一个该类型的对象，且使用了根据类型自动装配
+	這個class"cn.itcast.d_auto.UserService"剛剛被用過一次了(自動模式的限制)
 	<bean id="userService_test" class="cn.itcast.d_auto.UserService" autowire="byType"></bean>
 	 -->
 </beans>      
