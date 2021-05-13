@@ -9,7 +9,7 @@ public class User {
 	
 	public User() {
 		super();
-		System.out.println("------User对象创建------");
+		System.out.println("------User对象创建------建構子User()");
 	}
 	public int getId() {
 		return id;
@@ -25,10 +25,13 @@ public class User {
 	}
 	
 	public void init_user() {
-		System.out.println("创建对象之后，初始化");
+		System.out.println("创建对象之后，初始化 ---init_user()");
 	}
 	public void destroy_user() {
-		System.out.println("IOC容器销毁，user对象回收!");
+		System.out.println("IOC容器销毁，user对象回收!---destroy_user()");
 	}
-	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + "]";
+	}
 }

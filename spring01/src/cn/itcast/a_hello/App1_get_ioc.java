@@ -22,19 +22,20 @@ public class App1_get_ioc {
 		// 创建容器对象(Bean的工厂), IOC容器 = 工厂类 + applicationContext.xml
 		BeanFactory factory = new XmlBeanFactory(resource);
 		// 得到容器创建的对象
-		User user = (User) factory.getBean("user");
+		User user = (User) factory.getBean("user_s");
 		
-		System.out.println(user.getId());
+		System.out.println(user);
 		
 	}
 	
-	//2. （方便）直接得到IOC容器对象 
+	//2. （方便）直接得到IOC容器对象 。這個才是正解以後都會用這個而已
 	@Test
 	public void testAc() throws Exception {
 		// 得到IOC容器对象
-		ApplicationContext ac = new ClassPathXmlApplicationContext("cn/itcast/a_hello/applicationContext.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"cn/itcast/a_hello/applicationContext.xml");
 		// 从容器中获取bean
-		User user = (User) ac.getBean("user");
+		User user = (User) ac.getBean("user_s");
 		
 		System.out.println(user);
 	}

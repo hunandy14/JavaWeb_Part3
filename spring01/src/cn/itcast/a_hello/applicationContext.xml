@@ -10,10 +10,17 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- IOC容器的配置： 要创建的所有的对象都配置在这里
-	<bean id="user" class="cn.itcast.a_hello.User" init-method="init_user" destroy-method="destroy_user" scope="singleton" lazy-init="false"></bean>
+	
+	init_user 和 destroy_user 的格式是預設的硬編碼，預設就會執行這兩個方法。
+	寫出來只是可以自定寫別的名字
 	 -->
 	 
-	<bean id="user1" class="cn.itcast.a_hello.User"></bean>
+	<bean id="user_s" class="cn.itcast.a_hello.User" 
+			init-method="init_user" destroy-method="destroy_user" 
+			scope="singleton" lazy-init="false"></bean>
+	 <!--
+	<bean id="user_s" class="cn.itcast.a_hello.User"></bean>
+	  -->
 </beans>      
 
 

@@ -22,30 +22,37 @@ public class App2_bean {
 	 * 	  init-method="init_user"       【对应对象的init_user方法，在对象创建爱之后执行 】
 	 *    destroy-method="destroy_user"  【在调用容器对象的destriy方法时候执行，(容器用实现类)】
 	 */
+	
 	@Test
 	public void testIOC() throws Exception {
 		// 得到IOC容器对象  【用实现类，因为要调用销毁的方法】
-		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("cn/itcast/a_hello/applicationContext.xml");
-		System.out.println("-----容器创建-----");
+		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext(
+				"cn/itcast/a_hello/applicationContext.xml");
 		
+		System.err.println("## getBean容器创建-----");
 		// 从容器中获取bean
-		User user1 = (User) ac.getBean("user");
-		User user2 = (User) ac.getBean("user");
+		User user1 = (User) ac.getBean("user_s");
+		user1.setName("Test1");
+		User user2 = (User) ac.getBean("user_s");
+		User user3 = (User) ac.getBean("user_s");
 		
+		System.err.println("## 打印內容-------------");
 		System.out.println(user1);
 		System.out.println(user2);
+		System.out.println(user3);
 		
 		// 销毁容器对象 
 		ac.destroy();
 	}
 	
-	@SuppressWarnings("unused")
 	@Test
 	public void test() throws Exception {
 		// 容器对象
-		ApplicationContext ac = new ClassPathXmlApplicationContext("cn/itcast/a_hello/applicationContext.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"cn/itcast/a_hello/applicationContext.xml");
 		System.out.println("-----容器创建完成-----");
-		User user1 = (User) ac.getBean("user1");
+		User user = (User) ac.getBean("user_s");
+		System.out.println(user);
 	}
 }
 

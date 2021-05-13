@@ -12,39 +12,43 @@
 	<!-- ###############对象创建############### -->
 	
 	<!-- 1. 默认无参数构造器 
-	<bean id="user1" class="cn.itcast.b_create_obj.User"></bean>
 	-->
+	<bean id="user1" class="cn.itcast.b_create_obj.User"></bean>
 	
-	<!-- 2. 带参数构造器 -->
+	<!-- 2. 带参数构造器 
+	-->
 	<bean id="user2" class="cn.itcast.b_create_obj.User">
 		<constructor-arg index="0" type="int" value="100"></constructor-arg>
-		<constructor-arg index="1" type="java.lang.String" value="Jack"></constructor-arg>
+		<constructor-arg index="1" type="java.lang.String" value="從xml中的User2設置的"></constructor-arg>
 	</bean>
 	
-	<!-- 定义一个字符串，值是"Jack" ;  String s = new String("jack")-->
-	<bean id="str" class="java.lang.String">
-		<constructor-arg value="Jacks"></constructor-arg>
+	<!-- 定义一个字符串，值是"Jack" ;  String str = new String("jack")
+	-->
+	<bean id="str_s" class="java.lang.String">
+		<constructor-arg value="Jack_從spring表內定義的字串"></constructor-arg>
 	</bean>
 	<bean id="user3" class="cn.itcast.b_create_obj.User">
 		<constructor-arg index="0" type="int" value="100"></constructor-arg>
-		<constructor-arg index="1" type="java.lang.String" ref="str"></constructor-arg>
+		<constructor-arg index="1" type="java.lang.String" ref="str_s"></constructor-arg>
 	</bean>
 	
 	
 	<!-- 3. 工厂类创建对象 -->
 	<!-- # 3.1 工厂类，实例方法 -->
-	<!-- 先创建工厂 -->
+	<!-- 先创建工厂 
+	-->
 	<bean id="factory" class="cn.itcast.b_create_obj.ObjectFactory"></bean>
-	<!-- 在创建user对象，用factory方的实例方法 -->
+	<!-- 在创建user对象，用factory方的实例方法 
+	-->
 	<bean id="user4" factory-bean="factory" factory-method="getInstance"></bean>
 	
 	
 	<!-- # 3.2 工厂类： 静态方法 -->
 	<!-- 
-		class 指定的就是工厂类型
+		class 指定的就是工厂类型 (帶static的函式)
 		factory-method  一定是工厂里面的“静态方法”
 	 -->
-	<bean id="user" class="cn.itcast.b_create_obj.ObjectFactory" factory-method="getStaticInstance"></bean>
+	<bean id="user5" class="cn.itcast.b_create_obj.ObjectFactory" factory-method="getStaticInstance"></bean>
 	
 	
 	<!-- 对象写法 -->
