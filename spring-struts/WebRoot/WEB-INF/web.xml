@@ -17,7 +17,7 @@
 	<!-- 2. spring 配置 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/classes/bean-action.xml</param-value>
+		<param-value>/WEB-INF/classes/bean-*.xml</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

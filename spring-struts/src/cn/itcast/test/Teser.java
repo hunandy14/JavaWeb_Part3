@@ -24,14 +24,16 @@ public class Teser {
 
 	@Test
 	public void spring_dao(){
-		ac_dao = new ClassPathXmlApplicationContext("bean-action.xml");
+		ac_dao = new ClassPathXmlApplicationContext("bean-dao.xml");
 		ud = (UserDao) ac_dao.getBean("userDao");
+
 		ud.save();
 	}
 	@Test
 	public void spring_service(){
-		ac_srv = new ClassPathXmlApplicationContext("bean-action.xml");
+		ac_srv = new ClassPathXmlApplicationContext("bean-service.xml");
 		us = (UserService) ac_srv.getBean("userService");
+
 		us.save();
 	}
 	
@@ -39,6 +41,7 @@ public class Teser {
 	public void spring_action(){
 		ac_act = new ClassPathXmlApplicationContext("bean-action.xml");
 		UserAction ua = (UserAction) ac_act.getBean("userAction");
+
 		try {
 			ua.execute();
 		} catch (Exception e) {

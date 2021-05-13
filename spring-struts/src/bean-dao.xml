@@ -1,4 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:p="http://www.springframework.org/schema/p"
@@ -15,12 +17,8 @@
      	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<bean id="userDao" class="cn.itcast.dao.UserDao" scope="singleton" lazy-init="false"></bean>
-	<bean id="userService" class="cn.itcast.service.UserService">
-		<property name="userDao" ref="userDao"></property>
-	</bean>
 	
-	
-</beans>     
+</beans>
 
 
 

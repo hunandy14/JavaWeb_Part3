@@ -14,13 +14,8 @@
          http://www.springframework.org/schema/tx
      	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<!-- 前置物件多例 -->
-	<bean id="userDao" class="cn.itcast.dao.UserDao" scope="singleton" lazy-init="false"></bean>
-	<bean id="userService" class="cn.itcast.service.UserService">
-		<property name="userDao" ref="userDao"></property>
-	</bean>
-	
 	<!-- 指定action多例 -->
+	<import resource="bean-service.xml"/>
 	<bean id="userAction" class="cn.itcast.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService"></property>
 	</bean>
