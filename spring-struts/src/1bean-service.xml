@@ -14,7 +14,7 @@
          http://www.springframework.org/schema/tx
      	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	
+	<bean id="userDao" class="cn.itcast.dao.UserDao" scope="singleton" lazy-init="false"></bean>
 	<bean id="userService" class="cn.itcast.service.UserService">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
