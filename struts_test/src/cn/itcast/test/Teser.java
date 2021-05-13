@@ -31,12 +31,20 @@ public class Teser {
 	@Test
 	public void spring_service(){
 		ac_srv = new ClassPathXmlApplicationContext("bean-action.xml");
+		us = (UserService) ac_srv.getBean("userService");
+		us.save();
 	}
 	
 	@Test
 	public void spring_action(){
-		 ac_act = new ClassPathXmlApplicationContext("bean-action.xml");
+		ac_act = new ClassPathXmlApplicationContext("bean-action.xml");
 		UserAction ua = (UserAction) ac_act.getBean("userAction");
+		try {
+			ua.execute();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

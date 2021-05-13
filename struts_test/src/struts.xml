@@ -5,19 +5,13 @@
 
 <struts>
 
-	<!-- 
+	<!--
+	-->
 	<package name="user" extends="struts-default">
 		<action name="user" class="userAction" method="execute">
 			<result name="success">/index.jsp</result>
 		</action>
 	</package>
-	 -->
-	<package name="user" extends="struts-default">
-		<action name="user" class="cn.itcast.action.UserAction" method="execute">
-			<result name="success">/index.jsp</result>
-		</action>
-	</package>
-	 
  
 	<package name="hello" extends="struts-default">
     	<action name="hello" class="cn.itcast.action.HelloAction" method="execute">

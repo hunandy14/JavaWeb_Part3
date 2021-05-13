@@ -14,18 +14,20 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String execute() throws Exception {
-		newServicer();
-		
+		System.err.println("spring創建的Dao");
 		userService.save();
 		return SUCCESS;
 	}
-
-	private void newServicer() {
+	
+	public String execute2() throws Exception {
 		UserDao userDao = new UserDao();
 		userService = new UserService();
 		userService.setUserDao(userDao);
+		
+		System.err.println("手動創建的Dao");
+		userService.save();
+		return SUCCESS;
 	}
-	
 }
 
 
