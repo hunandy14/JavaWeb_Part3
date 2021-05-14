@@ -1,6 +1,5 @@
 package cn.itcast.g_pointcut;
 
-import org.springframework.stereotype.Component;
 
 /**
  * 目标对象

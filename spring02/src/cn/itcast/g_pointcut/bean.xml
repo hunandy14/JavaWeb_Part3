@@ -22,6 +22,21 @@
 	<!-- Aop配置 -->
 	<aop:config>
 		
+		<!--
+		 - 第一個   * 表示-> [公私]要攔截 public 還是 private                        (不能省略一定要打值或*)
+		 - 第二個   * 表示-> [位置]包名.檔名.函式名稱開頭*  (可以隨便後面的字擴大範圍)   (可以省略連完全不打值或*)
+		 - 第三個   * 表示-> [函式]精準定位到底完整的函式名稱結束為止                   (完整表達時可以省略不打*)
+		 
+		 [位置]和[函式]尾端可以用*號取代
+		
+		可以2和3基本上就同一組完整的 [類位置.類.函式名稱] *可以從頭到尾隨意移動，但至少要有一個 * 存在
+		要完整的指到底的時候把*留在前面的位置才能過
+		*留在前面後面可以完整指定到函式名稱
+		*留在後面位置可以省略函式名稱可以打一半
+		
+		
+		 -->
+		
 		<!-- 定义一个切入点表达式： 拦截哪些方法 -->
 		<!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.*.*(..))" id="pt"/>-->
 		
@@ -43,11 +58,11 @@
 		<!-- 【多个表达式】 -->
 		<!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.save()) || execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
 		<!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.save()) or execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
-		<!-- 下面2个且关系的，没有意义 -->
+		<!-- 下面2个且关系的，没有意义 不會出bug能執行而已實際上等於兩個都沒寫 -->
 		<!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.save()) &amp;&amp; execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
 		<!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.save()) and execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
 		
-		<!-- 【取非值】 -->
+		<!-- 【取非值】黑名單的意思 -->
 		<!--<aop:pointcut expression="!execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
 		<aop:pointcut expression=" not execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>
 		

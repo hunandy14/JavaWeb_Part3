@@ -1,7 +1,5 @@
 package cn.itcast.f_aop_xml;
 
-import org.springframework.stereotype.Component;
-
 /**
  * 目标对象
  * @author Jie.Yuan
