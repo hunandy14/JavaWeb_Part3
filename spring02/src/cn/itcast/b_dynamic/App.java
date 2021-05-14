@@ -1,8 +1,10 @@
 package cn.itcast.b_dynamic;
 
-public class App {
+import org.junit.Test;
 
-	public static void main(String[] args) {
+public class App {
+	@Test
+	public void main() {
 		// 目标对象
 		IUserDao target = new UserDao();
 		// 【原始的类型 class cn.itcast.b_dynamic.UserDao】
