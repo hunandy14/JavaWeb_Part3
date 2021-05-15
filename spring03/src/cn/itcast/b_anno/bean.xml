@@ -27,7 +27,7 @@
 		<property name="acquireIncrement" value="2"></property>
 	</bean>
 	
-	<!-- 2. JdbcTemplate工具类实例 -->
+	<!-- 2. JdbcTemplate工具类实例 (這個東西寫在函式庫裡面沒辦法加注意解只能寫這裡) -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>

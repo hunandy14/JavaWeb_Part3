@@ -34,8 +34,11 @@ public class DeptService {
 			propagation = Propagation.REQUIRED			// 事务的传播行为
 	)
 	public void save(Dept dept){
-		logDao.insertLog();  // 保存日志  【自己开启一个事务】
-		int i = 1/0;
+		// 保存日志  【自己开启一个事务】 才不會被事務一起回滾了
+		// 因為標籤事務只能整塊函式都事務，不能選擇從哪一行開始，就自己再開一個事務就可以脫離控制了
+		logDao.insertLog();
+		int i = 1;
+		i = i/0;
 		deptDao.save(dept);  // 保存部门
 	}
 }

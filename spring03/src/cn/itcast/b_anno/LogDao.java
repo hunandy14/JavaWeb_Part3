@@ -7,6 +7,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/*
+USE hib_demo;
+CREATE TABLE log_(
+	content VARCHAR(20)
+);
+*/
+
 // 测试： 日志传播行为
 @Repository
 public class LogDao {
