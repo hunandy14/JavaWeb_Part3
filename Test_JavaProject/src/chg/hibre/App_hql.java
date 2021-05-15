@@ -47,7 +47,16 @@ public class App_hql {
 		session.getTransaction().commit();
 		session.close();
 	}
+	
 
+	@Test
+	public void hql2() {
+		Session session = sf.getCurrentSession();
+		session.beginTransaction();
+		
+		Dept dept = (Dept) session.get(Dept.class, 1);
+		System.err.println(dept);
+	}
 
 }
 

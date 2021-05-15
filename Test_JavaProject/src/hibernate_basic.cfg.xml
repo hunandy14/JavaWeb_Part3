@@ -21,12 +21,14 @@
 		<!-- 2. 其他相关配置 -->
 		<!-- 2.1 显示hibernate在运行时候执行的sql语句 -->
 		<property name="hibernate.show_sql">true</property>
-		<!-- 2.2 格式化sql
-		<property name="hibernate.format_sql">true</property>  -->
-		<!-- 2.3 自动建表  
-		<property name="hibernate.hbm2ddl.auto">create</property>
-		-->
+		<!-- 2.2 格式化sql -->
+		<property name="hibernate.format_sql">false</property>
+		<!-- 2.3 自动建表  -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- 2.4 關閉驗證器 (Web會報錯) -->
+		<property name="javax.persistence.validation.mode">none</property>
+		<!-- 2.5 啟用 getCurrentSession() -->
+		<property name="hibernate.current_session_context_class">thread</property>
 		
 		<!-- 3. 加载所有映射 
 		<mapping resource="cn/itcast/a_hello/Employee.hbm.xml"/>
