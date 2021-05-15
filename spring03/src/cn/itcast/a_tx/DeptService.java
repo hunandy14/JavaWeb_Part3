@@ -15,6 +15,14 @@ public class DeptService {
 		this.deptDao = deptDao;
 	}
 
+	public DeptService() {
+		super();
+	}
+	public DeptService(DeptDao deptDao) {
+		super();
+		this.deptDao = deptDao;
+	}
+
 	/*
 	 * 事务控制？
 	 */

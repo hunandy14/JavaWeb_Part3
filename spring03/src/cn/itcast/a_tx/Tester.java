@@ -20,24 +20,26 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Tester {
-	// 建造用物件(還原 spring步驟)
-	private DataSource dataSource;
-	JdbcTemplate jdbcTemplate;
 	DeptDao deptDao;
 	
 	@Test
+	public void save(){
+		deptDao();
+		Dept dept = new Dept("Tester輸入的部門");
+		deptDao.save(dept);
+	}
+		
+	@Test
 	// 還原 spring 建造的物件
-	public void new_Dao() throws PropertyVetoException {
+	public void deptDao() {
 		// 建立  dataSource
-		dataSource = new_ComboPooledDataSource();
+		DataSource dataSource = new_ComboPooledDataSource();
 		// 建立 jdbcTemplate
-		jdbcTemplate = new JdbcTemplate(dataSource);
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		//建立 Dao
 		deptDao = new DeptDao(jdbcTemplate);
 	}
-	private ComboPooledDataSource new_ComboPooledDataSource()
-			throws PropertyVetoException
-	{
+	private ComboPooledDataSource new_ComboPooledDataSource(){
 		// 伺服器設定值
 		String driverClass="com.mysql.jdbc.Driver";
 		String jdbcUrl="jdbc:mysql:///hib_demo";
@@ -49,7 +51,11 @@ public class Tester {
 		int acquireIncrement=2;
 		// 設置ds
 		ComboPooledDataSource ds = new ComboPooledDataSource();
-		ds.setDriverClass(driverClass);
+		try {
+			ds.setDriverClass(driverClass);
+		} catch (PropertyVetoException e) {
+			e.printStackTrace();
+		}
 		ds.setJdbcUrl(jdbcUrl);
 		ds.setUser(user);
 		ds.setPassword(password);
@@ -83,7 +89,6 @@ public class Tester {
 		stmt.close();
 		con.close();
 	}
-
 	private DriverManagerDataSource new_DataSource_Spring() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 	    ds.setUrl("jdbc:mysql:///hib_demo");
@@ -97,11 +102,8 @@ public class Tester {
 	@Test
 	// 原本的方法 spring 沒包到這些這些
 	public void JDBC() throws Exception {
-		// 設置dataSource - 連接到資料庫
-		dataSource = new_DataSource();
-		
 		// 获取连接
-		Connection con = dataSource.getConnection();
+		Connection con = new_DataSource().getConnection();
 		
 		// 查資料庫內容
 		String sql = "select * from t_dept";

@@ -4,6 +4,17 @@ public class Dept {
 
 	private int deptId;
 	private String deptName;
+	
+	
+	public Dept() {
+		super();
+	}
+	public Dept(String deptName) {
+		super();
+		this.deptName = deptName;
+	}
+
+
 	public int getDeptId() {
 		return deptId;
 	}

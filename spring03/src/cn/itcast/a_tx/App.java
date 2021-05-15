@@ -9,13 +9,14 @@ public class App {
 	@Test
 	public void testApp() throws Exception {
 		//容器对象
-		ApplicationContext ac = new ClassPathXmlApplicationContext("cn/itcast/a_tx/bean.xml");
+		ApplicationContext ac;
+		ac = new ClassPathXmlApplicationContext("cn/itcast/a_tx/bean.xml");
 		
 		// 模拟数据
-//		Dept dept = new Dept();
-//		dept.setDeptName("测试： 开发部");
+		Dept dept = new Dept();
+		dept.setDeptName("测试： 开发部");
 		
-//		DeptService deptService = (DeptService) ac.getBean("deptService");
-//		deptService.save(dept);
+		DeptService deptService = (DeptService) ac.getBean("deptService");
+		deptService.save(dept);
 	}
 }
