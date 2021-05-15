@@ -34,16 +34,15 @@ public class App_hql {
 		//数据库写法：SELECT dept_id, COUNT(*) FROM t_employee GROUP BY dept_id HAVING COUNT(*)>0;
 		// HQL写法
 		
-		Query q1 = session.createQuery("select e.dept, count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
-		Query q2 = session.createQuery("select count(*) from Employee e group by e.dept HAVING COUNT(*)>0");
+		String s1="select e.dept, count(*) from Employee e group by e.dept HAVING COUNT(*)>0";
+		String s2="select count(*) from Employee e group by e.dept HAVING COUNT(*)>0";
+		String s3="select d from Dept d";
+		
+		Query q = session.createQuery(s3);
 		
 		// 取出數據1
-		List<Object> queryList1 = q1.list();
-		QueryList.out(queryList1);
-		
-		// 取出數據2
-		List<Object> queryList2 = q2.list();
-		QueryList.out(queryList2);
+		List<Object> queryList = q.list();
+		QueryList.out(queryList);
 		
 		session.getTransaction().commit();
 		session.close();
