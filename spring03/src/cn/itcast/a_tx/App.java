@@ -12,11 +12,8 @@ public class App {
 		ApplicationContext ac;
 		ac = new ClassPathXmlApplicationContext("cn/itcast/a_tx/bean.xml");
 		
-		// 模拟数据
-		Dept dept = new Dept();
-		dept.setDeptName("测试： 开发部");
-		
 		DeptService deptService = (DeptService) ac.getBean("deptService");
-		deptService.save(dept);
+		
+		deptService.save(new Dept("事務回滾測試"));
 	}
 }

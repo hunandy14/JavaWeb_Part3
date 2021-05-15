@@ -5,6 +5,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-jdbc"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-aop"/>
 	<classpathentry kind="lib" path="JDBC/commons-beanutils-1.8.3.jar"/>
 	<classpathentry kind="lib" path="JDBC/commons-dbcp-1.4.jar"/>
 	<classpathentry kind="lib" path="JDBC/commons-dbutils-1.6.jar"/>
