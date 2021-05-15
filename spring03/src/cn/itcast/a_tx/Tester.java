@@ -1,6 +1,10 @@
 package cn.itcast.a_tx;
 
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 
@@ -10,15 +14,91 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Tester {
+	// 建造用物件(還原 spring步驟)
 	private DataSource dataSource;
+	JdbcTemplate jdbcTemplate;
+	DeptDao deptDao;
+	
+	@Test
+	// 還原 spring 建造的物件
+	public void new_Dao() throws PropertyVetoException {
+		// 建立  dataSource
+		dataSource = new_ComboPooledDataSource();
+		// 建立 jdbcTemplate
+		jdbcTemplate = new JdbcTemplate(dataSource);
+		//建立 Dao
+		deptDao = new DeptDao(jdbcTemplate);
+	}
+	private ComboPooledDataSource new_ComboPooledDataSource()
+			throws PropertyVetoException
+	{
+		// 伺服器設定值
+		String driverClass="com.mysql.jdbc.Driver";
+		String jdbcUrl="jdbc:mysql:///hib_demo";
+		String user="root";
+		String password="root";
+		int initialPoolSize=3;
+		int maxPoolSize=10;
+		int maxStatements=100;
+		int acquireIncrement=2;
+		// 設置ds
+		ComboPooledDataSource ds = new ComboPooledDataSource();
+		ds.setDriverClass(driverClass);
+		ds.setJdbcUrl(jdbcUrl);
+		ds.setUser(user);
+		ds.setPassword(password);
+		ds.setInitialPoolSize(initialPoolSize);
+		ds.setMaxPoolSize(maxPoolSize);
+		ds.setMaxStatements(maxStatements);
+		ds.setAcquireIncrement(acquireIncrement);
+		return ds;
+	}
+	
+
+	@Test
+	// 範例給的測試拿出來用一下
+	public void springJDBC() throws ClassNotFoundException, SQLException{
+		Connection con = null;
+		Statement stmt = null;
+		String sql = "insert into t_dept(deptName) values('test');";
+		
+		// 連接對象方法1
+//	    Class.forName("com.mysql.jdbc.Driver");
+//		con = DriverManager.getConnection("jdbc:mysql:///hib_demo", "root", "root");
+		// 連接對象方法2
+		con = new_DataSource_Spring().getConnection();
+		
+		// 执行命令对象
+		stmt =  con.createStatement();
+		// 执行
+		stmt.execute(sql);
+		
+		// 关闭
+		stmt.close();
+		con.close();
+	}
+
+	private DriverManagerDataSource new_DataSource_Spring() {
+		DriverManagerDataSource ds = new DriverManagerDataSource();
+	    ds.setUrl("jdbc:mysql:///hib_demo");
+	    ds.setDriverClassName("com.mysql.jdbc.Driver");
+	    ds.setUsername("root");
+	    ds.setPassword("root");
+		return ds;
+	}
 
 	
 	@Test
-	public void testDbcp() throws Exception {
+	// 原本的方法 spring 沒包到這些這些
+	public void JDBC() throws Exception {
 		// 設置dataSource - 連接到資料庫
-		dataSource = newDataSource();
+		dataSource = new_DataSource();
 		
 		// 获取连接
 		Connection con = dataSource.getConnection();
@@ -34,35 +114,7 @@ public class Tester {
 		// 关闭
 		con.close();
 	}
-
-
-
-
-
-	@Test
-	public void JDBC(){
-//		String sql = "insert into t_dept(deptName) values('test');";
-//		Connection con = null;
-//		Statement stmt = null;
-//		Class.forName("com.mysql.jdbc.Driver");
-//		// 连接对象
-//		con = DriverManager.getConnection("jdbc:mysql:///hib_demo", "root", "root");
-//		// 执行命令对象
-//		stmt =  con.createStatement();
-//		// 执行
-//		stmt.execute(sql);
-//		
-//		// 关闭
-//		stmt.close();
-//		con.close();
-	}
-	@Test
-	public void DeptDao(){
-		
-	}
-	
-	
-	private DataSource newDataSource() {
+	private DataSource new_DataSource() {
 		// DBCP连接池核心类
 		BasicDataSource ds = new BasicDataSource();		
 		// 连接池参数配置：初始化连接数、最大连接数 / 连接字符串、驱动、用户、密码

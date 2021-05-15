@@ -11,6 +11,15 @@ public class DeptDao {
 	
 	// 容器注入JdbcTemplate对象
 	private JdbcTemplate jdbcTemplate;
+	
+	public DeptDao() {
+		super();
+	}
+	public DeptDao(JdbcTemplate jdbcTemplate) {
+		super();
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
