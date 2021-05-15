@@ -3,6 +3,7 @@ package cn.itcast.h_jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -34,9 +35,12 @@ public class UserDao {
 	
 	public Dept findById(int id) {
 		String sql = "select * from t_dept where deptId=?";
+
 		// 雖然只有拿到一個紀錄，但是通用的關係所以適用List返回，只好再自己取出來
 		List<Dept> list = jdbcTemplate.query(sql,new MyResult(), id);
-		return (list!=null && list.size()>0) ? list.get(0) : null;
+		Dept dept1 = (list!=null && list.size()>0) ? list.get(0) : null;
+		
+		return dept1;
 	}
 	
 	public List<Dept> getAll() {

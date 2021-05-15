@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="spring-jdbc/mysql-connector-java-5.1.12-bin.jar"/>
 	<classpathentry kind="lib" path="spring-jdbc/spring-jdbc-3.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="spring-jdbc/spring-tx-3.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/commons-dbutils-1.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
