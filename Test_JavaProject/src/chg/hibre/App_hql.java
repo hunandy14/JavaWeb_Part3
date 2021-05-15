@@ -17,7 +17,7 @@ public class App_hql {
 	private static SessionFactory sf;
 	static {
 		sf = new Configuration()
-			.configure()
+			.configure("hibernate_basic.cfg.xml")
 			.addClass(Dept.class)   
 			.addClass(Employee.class)   // 测试时候使用
 			.buildSessionFactory();
