@@ -19,13 +19,14 @@ public class EmployeeAction extends ActionSupport{
 	
 	@Override
 	public String execute(){
-		int empid = 17;
+		int empid = 2;
 		// 调用Service
-		Employee emp = employeeService.findById(empid);
+		Employee emp = new Employee("Test123321");
+//		emp = employeeService.findById(empid);
 		// 保存到request
-		Map<String,Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
-		request.put("emp", emp);
-System.err.println("#######################"+request);
+//		Map<String,Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
+//		request.put("emp", emp);
+System.err.println("#######################" + emp);
 		return SUCCESS;
 	}
 }

@@ -8,6 +8,15 @@ public class Employee {
 	private Dept dept;
 	
 	
+	
+	public Employee() {
+		super();
+	}
+	public Employee(String empName) {
+		super();
+		this.empName = empName;
+	}
+	
 	public int getId() {
 		return id;
 	}
