@@ -8,6 +8,10 @@ public class Dept {
 	public Dept() {
 		super();
 	}
+	public Dept(String name) {
+		super();
+		this.name = name;
+	}
 	public Dept(int id, String name) {
 		super();
 		this.id = id;

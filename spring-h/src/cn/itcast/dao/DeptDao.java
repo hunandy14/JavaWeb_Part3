@@ -11,6 +11,16 @@ public class DeptDao {
 
 	// Spring与Hibernate整合： IOC容器注入
 	private SessionFactory sessionFactory;
+	
+	
+	public DeptDao() {
+	}
+	public DeptDao(SessionFactory sessionFactory) {
+		super();
+		this.sessionFactory = sessionFactory;
+	}
+	
+
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
