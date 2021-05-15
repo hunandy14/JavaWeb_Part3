@@ -8,8 +8,11 @@ public class test {
 	@Test
 	public void Emp(){
 		ApplicationContext ac;
-		ac = new ClassPathXmlApplicationContext("bean-base.xml");
+//		ac = new ClassPathXmlApplicationContext("bean-base.xml");
 //		ac = new ClassPathXmlApplicationContext("bean-dao.xml");
+//		ac = new ClassPathXmlApplicationContext("bean-service.xml");
+		ac = new ClassPathXmlApplicationContext("bean-action.xml");
+		
 		
 	}
 

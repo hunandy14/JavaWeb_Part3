@@ -5,7 +5,8 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	
 	<!-- 配置spring的OpenSessionInView模式 【目的：JSp页面访问懒加载数据】 -->
-	<!-- 注意：访问struts时候需要带上*.action后缀 -->
+	<!-- 注意：访问struts时候需要带上*.action后缀 
+	-->
 	<filter>
 		<filter-name>OpenSessionInView</filter-name>
 		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
