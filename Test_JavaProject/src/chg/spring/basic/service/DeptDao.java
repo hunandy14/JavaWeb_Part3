@@ -1,6 +1,8 @@
-package chg.spring.basic;
+package chg.spring.basic.service;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import chg.spring.basic.entity.Dept;
 
 /**
  * dao实现，使用Spring对jdbc支持功能

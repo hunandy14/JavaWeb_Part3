@@ -1,4 +1,4 @@
-package chg.spring.basic;
+package chg.spring.basic.entity;
 
 public class Dept {
 

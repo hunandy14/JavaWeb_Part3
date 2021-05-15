@@ -4,6 +4,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import chg.spring.basic.entity.Dept;
+import chg.spring.basic.service.DeptService;
+
 public class App {
 
 	@Test

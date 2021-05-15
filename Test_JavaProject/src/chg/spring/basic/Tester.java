@@ -16,6 +16,9 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import chg.spring.basic.entity.Dept;
+import chg.spring.basic.service.DeptDao;
+
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 

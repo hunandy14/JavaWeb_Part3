@@ -1,6 +1,8 @@
-package chg.spring.basic;
+package chg.spring.basic.service;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import chg.spring.basic.entity.Dept;
 
 /**
  * Service

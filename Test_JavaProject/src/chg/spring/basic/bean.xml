@@ -33,12 +33,12 @@
 	</bean>
 	
 	<!-- 3. dao实例 -->
-	<bean id="deptDao" class="chg.spring.basic.DeptDao">
+	<bean id="deptDao" class="chg.spring.basic.service.DeptDao">
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
 	</bean>
  
 	<!-- 4. service实例 -->
-	<bean id="deptService" class="chg.spring.basic.DeptService">
+	<bean id="deptService" class="chg.spring.basic.service.DeptService">
 		<property name="deptDao" ref="deptDao"></property>
 	</bean>
 	
@@ -62,7 +62,7 @@
 	<!-- 5.3 Aop配置： 拦截哪些方法(切入点表表达式) + 应用上面的事务增强配置
 	 -->
 	<aop:config>
-		<aop:pointcut expression="execution(* chg.spring.basic.DeptService.save(..))" id="pt"/>
+		<aop:pointcut expression="execution(* chg.spring.basic.service.DeptService.save(..))" id="pt"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pt"/>
 	</aop:config>
 	
