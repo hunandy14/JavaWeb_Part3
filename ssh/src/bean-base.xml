@@ -36,7 +36,12 @@
 		<!-- b. hibernate常用配置： 方言、显示sql、自动建表等 -->
 		<property name="hibernateProperties">
 			<props>
+			
 				<prop key="javax.persistence.validation.mode">none</prop>
+				<!-- 開了 Web 會炸 
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				 -->
+				
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>

@@ -14,6 +14,10 @@ public class EmployeeService {
 	public void setEmployeeDao(EmployeeDao employeeDao) {
 		this.employeeDao = employeeDao;
 	}
+	public EmployeeDao getEmployeeDao() {
+		return employeeDao;
+	}
+
 
 	/**
 	 * 查询

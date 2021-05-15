@@ -13,7 +13,11 @@ public class EmployeeDao {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+
 	/**
 	 * 查询
 	 * @param emp
