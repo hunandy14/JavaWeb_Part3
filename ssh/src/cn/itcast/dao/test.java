@@ -15,10 +15,13 @@ public class test {
 	
 	
 	static {
-//		ac = new ClassPathXmlApplicationContext("bean-base.xml");
-//		ac = new ClassPathXmlApplicationContext("bean-dao.xml");
-//		ac = new ClassPathXmlApplicationContext("bean-service.xml");
-		ac = new ClassPathXmlApplicationContext("bean-action.xml");
+		ac = new ClassPathXmlApplicationContext
+			(
+				"bean-base.xml",
+			    "bean-dao.xml",
+			    "bean-service.xml",
+			    "bean-action.xml"
+			);
 	}
 	
 //	@Test
@@ -31,7 +34,7 @@ public class test {
 		System.err.println(emp);
 	}
 	
-	@Test
+//	@Test
 	public void employeeService(){
 		EmployeeService empSrv = (EmployeeService) ac.getBean("employeeService");
 		EmployeeDao empDao = empSrv.getEmployeeDao();
@@ -44,6 +47,37 @@ public class test {
 	}
 	
 //	@Test
+	public void getDao2Employee(){
+		Employee emp;
+		EmployeeDao empDao = (EmployeeDao) ac.getBean("employeeDao");
+		EmployeeService empSrv;		
+		
+		SessionFactory ds = empDao.getSessionFactory();
+		Session s = ds.openSession();
+		s.beginTransaction();
+		
+		emp = empDao.findById(1);
+		System.err.println(emp);
+		
+		s.getTransaction().commit();
+		s.close();
+	}
+	
+	@Test
+	public void getEmployee(){
+		Employee emp;
+		
+		Session s = dataSource.openSession();
+		s.beginTransaction();
+		
+		emp = (Employee) s.get(Employee.class, 1);
+		System.err.println(emp);
+		
+		s.getTransaction().commit();
+		s.close();
+	}
+	
+	@Test
 	public void session(){
 		Session s = dataSource.openSession();
 		s.beginTransaction();

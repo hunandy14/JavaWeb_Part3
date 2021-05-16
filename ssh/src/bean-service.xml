@@ -14,7 +14,9 @@
          http://www.springframework.org/schema/tx
      	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<!-- 
 	<import resource="bean-dao.xml"/>
+	 -->
 	<bean id="employeeService" class="cn.itcast.service.EmployeeService">
 		<property name="employeeDao" ref="employeeDao"></property>
 	</bean>
