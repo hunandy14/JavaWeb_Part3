@@ -68,17 +68,24 @@ public class test {
 	@Test
 	public void action(){
 		EmployeeAction empAc = (EmployeeAction) ac.getBean("employeeAction");
-		empAc.execute();
+		
+		Session s = empAc.getEmployeeService().getEmployeeDao()
+//				.getSessionFactory().openSession();
+				.getSessionFactory().getCurrentSession();
+		
+//		empAc.execute();
+		Employee emp = (Employee) s.get(Employee.class, 1);
+		System.err.println(emp);
 	}
 	
 //	@Test
 	public void getEmployee(){
-		Employee emp;
+		SessionFactory dataSource = (SessionFactory) ac.getBean("sessionFactory");
 		
 		Session s = dataSource.openSession();
 		s.beginTransaction();
 		
-		emp = (Employee) s.get(Employee.class, 1);
+		Employee emp = (Employee) s.get(Employee.class, 1);
 		System.err.println(emp);
 		
 		s.getTransaction().commit();

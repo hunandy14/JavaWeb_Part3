@@ -18,7 +18,10 @@ public class EmployeeAction extends ActionSupport{
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
-	
+	public EmployeeService getEmployeeService() {
+		return employeeService;
+	}
+
 	@Override
 	public String execute(){
 		int empid = 2;
