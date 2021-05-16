@@ -1,4 +1,4 @@
-package cn.itcast.dao;
+package cn.itcast.test;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.itcast.dao.EmployeeDao;
 import cn.itcast.entity.Employee;
 import cn.itcast.service.EmployeeService;
 
@@ -77,7 +78,7 @@ public class test {
 		s.close();
 	}
 	
-	@Test
+//	@Test
 	public void session(){
 		Session s = dataSource.openSession();
 		s.beginTransaction();
