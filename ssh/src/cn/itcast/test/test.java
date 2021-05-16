@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.itcast.action.EmployeeAction;
 import cn.itcast.dao.EmployeeDao;
 import cn.itcast.entity.Employee;
 import cn.itcast.service.EmployeeService;
@@ -51,7 +52,7 @@ public class test {
 	public void getDao2Employee(){
 		Employee emp;
 		EmployeeDao empDao = (EmployeeDao) ac.getBean("employeeDao");
-		EmployeeService empSrv;		
+		EmployeeService empSrv;
 		
 		SessionFactory ds = empDao.getSessionFactory();
 		Session s = ds.openSession();
@@ -65,6 +66,12 @@ public class test {
 	}
 	
 	@Test
+	public void action(){
+		EmployeeAction empAc = (EmployeeAction) ac.getBean("employeeAction");
+		empAc.execute();
+	}
+	
+//	@Test
 	public void getEmployee(){
 		Employee emp;
 		
