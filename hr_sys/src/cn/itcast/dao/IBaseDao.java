@@ -2,8 +2,6 @@ package cn.itcast.dao;
 
 import java.util.List;
 
-import cn.itcast.entity.Employee;
-
 /**
  * 所有dao的通用操作接口定义
  * @author Jie.Yuan

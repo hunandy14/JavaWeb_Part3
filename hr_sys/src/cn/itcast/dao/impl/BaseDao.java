@@ -7,7 +7,6 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 
 import cn.itcast.dao.IBaseDao;
-import cn.itcast.entity.Employee;
 
 /**
  * 所有dao的通用操作，希望所有的dao都继承此类
@@ -23,6 +22,7 @@ public class BaseDao<T> implements IBaseDao<T> {
 	private String className;
 	
 	// 反射泛型
+	@SuppressWarnings("unchecked")
 	public BaseDao(){
 		Type type = this.getClass().getGenericSuperclass();
 		// 转换为参数化类型

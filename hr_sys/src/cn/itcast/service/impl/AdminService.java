@@ -1,7 +1,6 @@
 package cn.itcast.service.impl;
 
 import cn.itcast.dao.IAdminDao;
-import cn.itcast.dao.impl.AdminDao;
 import cn.itcast.entity.Admin;
 import cn.itcast.service.IAdminService;
 

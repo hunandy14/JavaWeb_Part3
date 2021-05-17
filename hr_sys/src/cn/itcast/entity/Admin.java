@@ -6,6 +6,15 @@ public class Admin {
 	private String adminName;
 	private String pwd;
 	
+	public Admin() {
+		super();
+	}
+	public Admin(String adminName, String pwd) {
+		super();
+		this.adminName = adminName;
+		this.pwd = pwd;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -24,6 +33,10 @@ public class Admin {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", adminName=" + adminName + ", pwd=" + pwd
+				+ "]";
+	}
 }

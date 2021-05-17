@@ -2,8 +2,6 @@ package cn.itcast.dao.impl;
 
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-
 import cn.itcast.dao.IEmployeeDao;
 import cn.itcast.entity.Employee;
 
