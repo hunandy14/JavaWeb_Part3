@@ -12,6 +12,8 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
  */
 public class UserInterceptor extends AbstractInterceptor {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		// 得到当前执行的方法

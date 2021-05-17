@@ -12,6 +12,7 @@ import cn.itcast.entity.Admin;
 import cn.itcast.service.IAdminService;
 import cn.itcast.service.impl.AdminService;
 
+@SuppressWarnings("unused")
 public class test_entity {
 	private static ApplicationContext ac = 
 	    new ClassPathXmlApplicationContext

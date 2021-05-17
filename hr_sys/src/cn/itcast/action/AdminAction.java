@@ -16,6 +16,8 @@ import com.opensymphony.xwork2.ModelDriven;
 // http://127.0.0.1:8081/hr_sys/admin_login
 public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
 
+	private static final long serialVersionUID = 1L;
+	
 	// 封装请求数据
 	private Admin admin = new Admin();
 	public void setAdmin(Admin admin) {

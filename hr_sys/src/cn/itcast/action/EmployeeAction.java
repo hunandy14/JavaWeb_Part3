@@ -25,7 +25,8 @@ import com.opensymphony.xwork2.util.ValueStack;
  *
  */
 public class EmployeeAction extends ActionSupport implements ModelDriven<Employee>, RequestAware{
-	
+
+	private static final long serialVersionUID = 1L;
 	/*******一、封装数据********/
 	private Employee employee = new Employee();   // 【模型驱动】
 	// 封装请求的部门id(下拉列表的实际的值)
