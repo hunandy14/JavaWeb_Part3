@@ -37,11 +37,11 @@ public class test_entity {
 
 	
 //	############################## Employee ##############################	
-	@Test
+//	@Test
 	public void ServiceEmployee_(){
 		
 	}
-//	@Test
+	@Test
 	public void ServiceEmployee_getall2(){
 		String name="chg";
 		List<Employee> list = empSrv.getAll(name);
@@ -49,19 +49,18 @@ public class test_entity {
 		for (int i = 0; i < list.size(); i++) {
 			Employee emp = list.get(i);
 			System.err.println("list["+i+"]::");
-			System.err.println("  "+emp.toSimpleString());
+			System.err.println("  "+emp);
 		}
 	}
 	
 	@Test
 	public void ServiceEmployee_getall(){
 		List<Employee> list = empSrv.getAll();
-		
 		// 獲取所有員工
 		for (int i = 0; i < list.size(); i++) {
 			Employee emp = list.get(i);
 			System.err.println("list["+i+"]::");
-			System.err.println("  "+emp.toSimpleString());
+			System.err.println("  "+emp);
 		}
 	}
 //	@Test
@@ -91,7 +90,7 @@ public class test_entity {
 		System.err.println(obj);
 	}
 //  ############################## 物件測試  ##############################
-	@Test
+//	@Test
 	public void entity(){
 		getDatabaseObject(Admin.class);
 //		getDatabaseObject(Dept.class);

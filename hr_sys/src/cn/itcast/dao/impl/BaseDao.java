@@ -4,6 +4,8 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import cn.itcast.dao.IBaseDao;
@@ -62,7 +64,8 @@ public class BaseDao<T> implements IBaseDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> getAll() {
-		return sessionFactory.getCurrentSession().createQuery("from " + className).list();
+		String sql = "from " + className;
+		return sessionFactory.getCurrentSession().createQuery(sql).list();
 	}
 
 	@Override
