@@ -38,4 +38,12 @@ public class Employee {
 		return "Employee [id=" + id + ", empName=" + empName + ", salary="
 				+ salary + ", dept=" + dept + "]";
 	}
+	public String toSimpleString() {
+		return "Employee [id=" + id + ", empName=" + empName + ", salary="
+				+ salary + "]";
+	}
+	public String toAllString() {
+		return "Employee [id=" + id + ", empName=" + empName + ", salary="
+				+ salary + ", dept=" + dept + "]";
+	}
 }

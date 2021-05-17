@@ -17,12 +17,14 @@ public class DeptDao implements IDeptDao {
 
 	@Override
 	public Dept findById(int id) {
+//		return this.findById(id);
 		return (Dept) sessionFactory.getCurrentSession().get(Dept.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dept> getAll() {
+//		return this.getAll();
 		return sessionFactory.getCurrentSession().createQuery("from Dept").list();
 	}
 
