@@ -25,7 +25,15 @@ public class test {
 			    "bean-action.xml"
 			);
 	}
+	// 員工
+	EmployeeService empSrv = (EmployeeService) ac.getBean("employeeService");
 	
+	@Test
+	public void EmployeeService(){
+		Employee obj = empSrv.findById(1);
+		System.err.println(obj.getId());
+		System.err.println(obj);
+	}
 //	@Test
 	public void empDao(){
 		//開啟事務  (線程版當作全圖攻擊來看)(要開 thread)

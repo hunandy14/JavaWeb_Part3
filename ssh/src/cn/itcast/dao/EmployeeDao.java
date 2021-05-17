@@ -2,6 +2,7 @@ package cn.itcast.dao;
 
 import java.io.Serializable;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 
 import cn.itcast.entity.Employee;
@@ -23,6 +24,8 @@ public class EmployeeDao {
 	 * @param emp
 	 */
 	public Employee findById(Serializable id) {
-		return (Employee) sessionFactory.getCurrentSession().get(Employee.class, id);
+		Employee emp = (Employee) sessionFactory.getCurrentSession().get(Employee.class, id);
+		Hibernate.initialize(emp.getDept());
+		return emp;
 	}
 }
