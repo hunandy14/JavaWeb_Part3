@@ -21,54 +21,12 @@ import cn.itcast.service.impl.AdminService;
 
 @SuppressWarnings("unused")
 public class test_entity {
-	private static ApplicationContext ac = 
-	    new ClassPathXmlApplicationContext
-	           (
-	               "bean.xml"
-	           );
-	// 管理員
-	IAdminService admSrv = (IAdminService) ac.getBean("adminService");
-	// 員工
-	IEmployeeService empSrv = (IEmployeeService) ac.getBean("employeeService");
-	// 部門
-	IDeptService deptSrv = (IDeptService) ac.getBean("deptService");
-	
-	
+	ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
 
-	
-//	############################## Employee ##############################	
-//	@Test
-	public void ServiceEmployee_(){
-		
-	}
-	@Test
-	public void ServiceEmployee_getall2(){
-		String name="chg";
-		List<Employee> list = empSrv.getAll(name);
-		// 獲取所有員工
-		for (int i = 0; i < list.size(); i++) {
-			Employee emp = list.get(i);
-			System.err.println("list["+i+"]::");
-			System.err.println("  "+emp);
-		}
-	}
-	
-	@Test
-	public void ServiceEmployee_getall(){
-		List<Employee> list = empSrv.getAll();
-		// 獲取所有員工
-		for (int i = 0; i < list.size(); i++) {
-			Employee emp = list.get(i);
-			System.err.println("list["+i+"]::");
-			System.err.println("  "+emp);
-		}
-	}
-//	@Test
-	public void ServiceEmployee_findById(){
-		// 根據ID查找
-		Object obj = empSrv.findById(1);
-		System.err.println(obj);
-	}
+	IAdminService admSrv = (IAdminService) ac.getBean("adminService");
+	IEmployeeService empSrv = (IEmployeeService) ac.getBean("employeeService");
+	IDeptService deptSrv = (IDeptService) ac.getBean("deptService");
+
 //	############################## Dept ##############################	
 //	@Test
 	public void ServiceDept(){
