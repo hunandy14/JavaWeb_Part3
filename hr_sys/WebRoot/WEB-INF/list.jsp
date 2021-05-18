@@ -21,6 +21,7 @@
   	 		<th>员工编号</th>
   	 		<th>员工姓名</th>
   	 		<th>员工薪水</th>
+  	 		<th>员工部門</th>
   	 		<th>操作</th>
   	 	</tr>
   	 	<s:if test="#request.listEmp != null">
@@ -30,6 +31,7 @@
   	 				<td> <s:property value="#emp.id"/> </td>
   	 				<td> <s:property value="#emp.empName"/> </td>
   	 				<td> <s:property value="#emp.salary"/> </td>
+  	 				<td> [<s:property value="#emp.dept.id"/>]<s:property value="#emp.dept.name"/> </td>
   	 				<td> 
   	 					<s:a href="emp_viewUpdate?id=%{#emp.id}">修改</s:a>
   	 					
