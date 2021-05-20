@@ -11,15 +11,18 @@
 
 <body>
 		<p align="center" >
-			註冊結果： <s:property value="#request.admin.name" /> &nbsp;
+			${requestScope.regInfoReqset }
+			REQ內容： <s:property value="#request.regInfoReqset" /> &nbsp;
 		</p>
 		
 	<s:if test="#session.regInfo != null">
 		<p align="center" >
 			註冊結果： <s:property value="#session.regInfo" /> &nbsp;
-		</p>
+		</p> 
+		<!-- 
 		<s:a href="#">退出</s:a>
 		<s:a href="emp_viewAdd">添加员工</s:a>
+		 -->
 	</s:if>
 
 	<s:form action="/admin_register" method="post" theme="simple">

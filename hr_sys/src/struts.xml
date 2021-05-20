@@ -65,6 +65,8 @@
 			<!-- 註冊成功 
 			<result name="regFaild">/login.jsp</result>
 			
+			<result name="regNewUser" type="redirectAction">admin_register</result>
+			<result name="regFaild" type="redirectAction">admin_register</result>
 			-->
 			<result name="regNewUser">/register.jsp</result>
 			<result name="regFaild">/register.jsp</result>

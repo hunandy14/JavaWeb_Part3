@@ -1,5 +1,7 @@
 package cn.itcast.action;
 
+import java.util.Map;
+
 import cn.itcast.entity.Admin;
 import cn.itcast.service.IAdminService;
 
@@ -57,25 +59,27 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
 			return "regFaild";
 		}
 	}
+	/**
+	 * 註冊帳號
+	 */
 	public String register(){
 System.out.println("#######進入register()");
 		// 登陆验证是否存在
 		Admin adminInfo = adminService.login(admin);
+		
 		// 验证
 		if (adminInfo == null){
 			System.err.println("###註冊成功");
 			adminService.register(admin);
+			ActionContext.getContext().getSession().put("regInfo", "註冊成功");
 			return "regNewUser";
 		} else {
 			System.err.println("###註冊失敗(帳號已經存在)");
 			ActionContext.getContext().getSession().put("regInfo", "帳號已經存在");
 			
 			// 数据回显
-//			ValueStack vs = ActionContext.getContext().getValueStack();
-//			String regInfo = "帳號已經存在";
-//			vs.pop();// 移除栈顶元素
-//			vs.push(admin); // 入栈
-//			
+			ActionContext.getContext().getContextMap().put("regInfoReqset", "帳號已經存在");
+			
 			ActionContext.getContext();
 			System.err.println("註冊失敗");
 			return "regFaild";
