@@ -15,13 +15,13 @@
   	 	<tr>
   	 		<td>管理员账号</td>
   	 		<td>
-  	 			<s:textfield name="adminName" id="adminName" value=""></s:textfield>
+  	 			<s:textfield name="adminName" id="adminName" value="chg"></s:textfield>
   	 		</td>
   	 	</tr>
   	 	<tr>
   	 		<td>密码：</td>
   	 		<td>
-  	 			<s:textfield name="pwd" id="pwd" value=""></s:textfield>
+  	 			<s:textfield name="pwd" id="pwd" value="123"></s:textfield>
   	 		</td>
   	 	</tr>
   	 	<tr>
