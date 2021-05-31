@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -35,7 +35,9 @@
 			var ajax = createAJAX();
 			//NO2)准备发送请求
 			var method = "GET";
+			//                                                    IE發現代碼相同就直接不傳了，隨便傳個亂碼才能刷新
 			var url = "${pageContext.request.contextPath}/AjaxTimeServlet?time=" + new Date().getTime();
+			//var url = "${pageContext.request.contextPath}/AjaxTimeServle";
 			ajax.open(method,url);
 			//NO3)真正发送请求体的数据到服务器，如果请求体中无数据的话，就用null表示
 			ajax.send(null);

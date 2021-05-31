@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author AdminTC
  */
 public class UserServlet extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
 		String username = request.getParameter("username");
 		byte[] buf = username.getBytes("ISO8859-1");
 		username = new String(buf,"UTF-8");
@@ -28,7 +30,9 @@ public class UserServlet extends HttpServlet {
 		pw.flush();
 		pw.close();
 	}
-	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
 		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
 		System.out.println("username=" + username);
